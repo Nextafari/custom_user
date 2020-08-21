@@ -16,7 +16,7 @@ class UserRegistration(APIView):
             # serializer.validated_data.get("full_name")
             # serializer.validated_data.get("email")
             # serializer.validated_data.get("password")
-            serializer.save()
+            serializer.save(request)
             return Response(
                 {'data': 'Created Successfully!'}, status=status.HTTP_201_CREATED
             )
