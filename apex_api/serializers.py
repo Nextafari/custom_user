@@ -36,9 +36,6 @@ class CustomUserDetailsSerializer(serializers.ModelSerializer):
                 })
         return super().validate(attrs)
 
-    def create(self, validated_data):
-        return UserSignUp.objects.create_user(**validated_data)
-
 
 
 

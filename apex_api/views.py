@@ -12,10 +12,6 @@ class UserRegistration(APIView):
         if request.method == "POST":
             serializer = UserRegisterSerializer(data=request.data, instance=request.user)
             serializer.is_valid(raise_exception=True)
-            # serializer.validated_data.get("referral_code")
-            # serializer.validated_data.get("full_name")
-            # serializer.validated_data.get("email")
-            # serializer.validated_data.get("password")
             serializer.save(request)
             return Response(
                 {'data': 'Created Successfully!'}, status=status.HTTP_201_CREATED
