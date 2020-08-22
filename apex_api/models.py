@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
-#from django.contrib.auth.models import AbstractUser
+# from django.contrib.auth.models import AbstractUser
 
 
 class MyUserManager(BaseUserManager):
@@ -49,9 +49,12 @@ class UserSignUp(AbstractBaseUser):
     email = models.EmailField(unique=True)
     referral_code = models.CharField(max_length=250, blank=True)
     full_name = models.CharField(max_length=50)
-    # password = models.CharField(max_length=50)
-    date_joined = models.DateTimeField(verbose_name='date joined', auto_now_add=True)
-    last_login = models.DateTimeField(verbose_name='last login', auto_now=True)
+    date_joined = models.DateTimeField(
+        verbose_name='date joined', auto_now_add=True
+    )
+    last_login = models.DateTimeField(
+        verbose_name='last login', auto_now=True
+    )
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
