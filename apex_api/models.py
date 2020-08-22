@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 
-class MyUserManager(BaseUserManager):
+class UserManager(BaseUserManager):
     """
     Custom user model manager where email is the unique identifiers
     for authentication instead of usernames.
@@ -40,7 +40,7 @@ class MyUserManager(BaseUserManager):
         return user
 
 
-class UserSignUp(AbstractBaseUser):
+class User(AbstractBaseUser):
     class Meta:
         verbose_name = "User Sign Up"
         verbose_name_plural = "User Sign Up"
@@ -59,7 +59,7 @@ class UserSignUp(AbstractBaseUser):
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
 
-    objects = MyUserManager()
+    objects = UserManager()
 
     # This overwrites django's default user model's username to a
     # username of choice

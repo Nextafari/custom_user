@@ -56,7 +56,7 @@ ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_USER_EMAIL_FIELD = 'email'
 ACCOUNT_LOGOUT_ON_GET = True
 
-AUTH_USER_MODEL = 'apex_api.UserSignUp'
+AUTH_USER_MODEL = 'apex_api.User'
 
 # REST_AUTH_SERIALIZERS = {
 #     "USER_DETAILS_SERIALIZER": "apex_api.serializers.CustomUserDetailsSerializer",
