@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import UserSignUp, RecentTransactions
+from .models import User, RecentTransactions
 
 
 class UserReg(admin.ModelAdmin):
@@ -8,7 +8,7 @@ class UserReg(admin.ModelAdmin):
        "is_active", "is_admin", "is_staff", "is_superuser"
     ]
 
-admin.site.register(UserSignUp, UserReg)
+admin.site.register(User, UserReg)
 
 
 class RecentTrans(admin.ModelAdmin):
