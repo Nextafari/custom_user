@@ -1,9 +1,9 @@
 from rest_framework import serializers
-from .models import User as UserSignUp
+from .models import User
 from django.contrib.auth import get_user_model  # If used custom user model
 
 
-UserSignUP = get_user_model()
+User = get_user_model()
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -12,7 +12,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
 
-        user = UserSignUp.objects.create(
+        user = User.objects.create(
             email=validated_data['email'],
             full_name=validated_data['full_name']
         )
@@ -22,7 +22,7 @@ class UserSerializer(serializers.ModelSerializer):
         return user
 
     class Meta:
-        model = UserSignUp
+        model = User
         # Tuple of serialized model fields (see link [2])
         fields = [
             'email', 'referral_code', 'full_name', 'password'
@@ -30,7 +30,7 @@ class UserSerializer(serializers.ModelSerializer):
 
         def validate(self, attrs):
             email = attrs["email"]
-            if UserSignUp.objects.filter(email=email).exists():
+            if User.objects.filter(email=email).exists():
                 raise serializers.ValidationError({
                     'email': 'This email already exits'
                     })

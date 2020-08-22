@@ -3,7 +3,6 @@ from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 
-
 class UserManager(BaseUserManager):
     use_in_migrations = True
 
@@ -32,8 +31,7 @@ class UserManager(BaseUserManager):
         return self._create_user(email, password, **extra_fields)
 
 
-
-class User(AbstractBaseUser,PermissionsMixin):
+class User(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ["full_name"]
 
