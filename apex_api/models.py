@@ -21,8 +21,10 @@ class UserManager(BaseUserManager):
         return self._create_user(email, password, **extra_fields)
 
     def create_superuser(self, email, password, **extra_fields):
-        extra_fields['is_superuser'] = True
-        extra_fields['is_staff'] = True
+        # extra_fields.setdefault('is_superuser', True)
+        # extra_fields.setdefault('is_staff', True)
+        self.is_staff = True
+        self.is_superuser = True
 
         if extra_fields.get('is_superuser') and extra_fields.get('is_staff') is not True:
             raise ValueError(
@@ -62,10 +64,12 @@ class User(AbstractBaseUser, PermissionsMixin):
         return self.is_admin
 
     def has_module_perms(self, app_label):
-        """ 
+        """
         Does the user have specific permission to view the app'app_label'?
         """
         return True
+
+
 
 
 class RecentTransactions(models.Model):
@@ -88,7 +92,7 @@ class RecentTransactions(models.Model):
         ("Deposit to wallet", "Deposit to wallet"),
         ("Withdrawal from wallet", "Withdrawal from wallet")
     )
-    
+
     status = models.CharField(max_length=60, choices=STATUS_CHOICES)
     date = models.DateTimeField(auto_now_add=True)
     merchant = models.CharField(max_length=60)

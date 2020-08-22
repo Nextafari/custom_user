@@ -8,6 +8,7 @@ class UserReg(admin.ModelAdmin):
        "is_active", "is_admin", "is_staff", "is_superuser"
     ]
 
+
 admin.site.register(User, UserReg)
 
 
@@ -16,5 +17,6 @@ class RecentTrans(admin.ModelAdmin):
         "status", "date", "merchant", "transaction_type", "amount", "currency", 
         "tokens", "details"
     ]
+
 
 admin.site.register(RecentTransactions, RecentTrans)
