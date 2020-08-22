@@ -93,8 +93,8 @@ class RecentTransactions(models.Model):
         ("Withdrawal", "Withdrawal")
     )
     CURRENCY_CHOICES = (
-        ("ETH", "ETH"),
-        ("BTC", "BTC")
+        ("Ξ ETH", "Ξ ETH"),
+        ("฿ BTC", "฿ BTC")
     )
     DETAIL_CHOICES = (
         ("Deposit to wallet", "Deposit to wallet"),
