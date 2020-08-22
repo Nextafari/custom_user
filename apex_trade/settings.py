@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'allauth',
     'allauth.account',
-    'rest_auth.registration',
+    #'rest_auth.registration',
 ]
 
 SITE_ID = 1
@@ -58,12 +58,12 @@ ACCOUNT_LOGOUT_ON_GET = True
 
 AUTH_USER_MODEL = 'apex_api.UserSignUp'
 
-REST_AUTH_SERIALIZERS = {
-    "USER_DETAILS_SERIALIZER": "apex_api.serializers.CustomUserDetailsSerializer",
-}
-REST_AUTH_REGISTER_SERIALIZERS = {
-    "REGISTER_SERIALIZER": "apex_api.serializers.UserRegisterSerializer",
-}
+# REST_AUTH_SERIALIZERS = {
+#     "USER_DETAILS_SERIALIZER": "apex_api.serializers.CustomUserDetailsSerializer",
+# }
+# REST_AUTH_REGISTER_SERIALIZERS = {
+#     "REGISTER_SERIALIZER": "apex_api.serializers.UserRegisterSerializer",
+# }
 
 
 MIDDLEWARE = [
