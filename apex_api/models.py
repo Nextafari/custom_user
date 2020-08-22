@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
-# from django.contrib.auth.models import AbstractUser
 
 
 class MyUserManager(BaseUserManager):
@@ -75,7 +74,9 @@ class UserSignUp(AbstractBaseUser):
         return self.is_admin
 
     def has_module_perms(self, app_label):
-        """ Does the user have specific permission to view the app'app_label'?"""
+        """ 
+        Does the user have specific permission to view the app'app_label'?
+        """
         return True
 
 
@@ -103,7 +104,9 @@ class RecentTransactions(models.Model):
     status = models.CharField(max_length=60, choices=STATUS_CHOICES)
     date = models.DateTimeField(auto_now_add=True)
     merchant = models.CharField(max_length=60)
-    transaction_type = models.CharField(max_length=60, choices=TRANSACTION_TYPE_CHOICES)
+    transaction_type = models.CharField(
+        max_length=60, choices=TRANSACTION_TYPE_CHOICES
+    )
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     currency = models.CharField(max_length=5, choices=CURRENCY_CHOICES)
     tokens = models.DecimalField(max_digits=9, decimal_places=2)
