@@ -16,14 +16,15 @@ class UserManager(BaseUserManager):
 
         user = self.model(
             email=self.normalize_email(email),
-            full_name=full_name
+            full_name=full_name,
+            **extra_fields
         )
 
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, full_name, password=None):
+    def create_superuser(self, email, full_name, password=None, **extra_fields):
         """
         Creates and saves a superuser with the given email, date of
         birth and password.
@@ -42,11 +43,10 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser):
     class Meta:
-        verbose_name = "User Sign Up"
-        verbose_name_plural = "User Sign Up"
+        verbose_name = "User"
+        verbose_name_plural = "User"
     username = None
     email = models.EmailField(unique=True)
-    referral_code = models.CharField(max_length=250, blank=True)
     full_name = models.CharField(max_length=50)
     date_joined = models.DateTimeField(
         verbose_name='date joined', auto_now_add=True
@@ -80,7 +80,15 @@ class User(AbstractBaseUser):
         return True
 
 
-class RecentTransactions(models.Model):
+class UserReferralLink(models.Model):
+    class Meta:
+        verbose_name = "Refferral link"
+        verbose_name_plural = "Referral link"
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    referral_link = models.CharField(max_length=100)
+
+
+class RecentTransaction(models.Model):
     class Meta:
         verbose_name = "Recent Transactions"
         verbose_name_plural = "Recent Transactions"
@@ -93,8 +101,8 @@ class RecentTransactions(models.Model):
         ("Withdrawal", "Withdrawal")
     )
     CURRENCY_CHOICES = (
-        ("ETH", "ETH"),
-        ("BTC", "BTC")
+        ("Ξ ETH", "Ξ ETH"),
+        ("฿ BTC", "฿ BTC")
     )
     DETAIL_CHOICES = (
         ("Deposit to wallet", "Deposit to wallet"),
