@@ -1,5 +1,10 @@
 from rest_framework import serializers
+<<<<<<< HEAD
 from .models import User
+=======
+from .models import User, RecentTransaction
+from django.contrib.auth import authenticate
+>>>>>>> nexta_new
 from django.contrib.auth import get_user_model  # If used custom user model
 
 
@@ -14,7 +19,7 @@ class UserSerializer(serializers.ModelSerializer):
 
         user = User.objects.create(
             email=validated_data['email'],
-            full_name=validated_data['full_name']
+            full_name=validated_data['full_name'],
         )
         user.set_password(validated_data['password'])
         user.save()
@@ -24,7 +29,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = [
-            'email', 'referral_code', 'full_name', 'password'
+            'email', 'full_name', 'password'
         ]
 
         def validate(self, attrs):
@@ -34,3 +39,23 @@ class UserSerializer(serializers.ModelSerializer):
                     'email': 'This email already exits'
                     })
             return super().validate(attrs)
+
+
+class UserLoginSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+    password = serializers.CharField(max_length=32)
+
+    def validate(self, validated_data):
+        user = authenticate(**validated_data)
+        if user and user.is_active:
+            return user
+        raise serializers.ValidationError("Incorrect Email or Password")
+
+
+class RecentTransactionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RecentTransaction
+        fields = [
+            "status", "date", "merchant", "transaction_type", "amount", "currency",
+            "tokens", "details"
+        ]
