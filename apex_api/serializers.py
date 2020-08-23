@@ -1,10 +1,6 @@
 from rest_framework import serializers
-<<<<<<< HEAD
-from .models import User
-=======
 from .models import User, RecentTransaction
 from django.contrib.auth import authenticate
->>>>>>> nexta_new
 from django.contrib.auth import get_user_model  # If used custom user model
 
 

@@ -4,9 +4,6 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 
 class UserManager(BaseUserManager):
-<<<<<<< HEAD
-    use_in_migrations = True
-=======
     """
     Custom user model manager where email is the unique identifiers
     for authentication instead of usernames.
@@ -17,39 +14,15 @@ class UserManager(BaseUserManager):
         """
         if not email:
             raise ValueError('Users must have an email address')
-
         user = self.model(
             email=self.normalize_email(email),
             full_name=full_name,
             **extra_fields
         )
->>>>>>> nexta_new
-
-    def _create_user(self, email, password, **extra_fields):
-        if not email:
-            raise ValueError("Valid email should be provided")
-        email = self.normalize_email(email)
-        user = self.model(email=email, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-<<<<<<< HEAD
-    def create_user(self, email, password=None, **extra_fields):
-        if not email:
-            raise ValueError("Valid email should be provided")
-        return self._create_user(email, password, **extra_fields)
-
-    def create_superuser(self, email, password, **extra_fields):
-        # extra_fields.setdefault('is_superuser', True)
-        # extra_fields.setdefault('is_staff', True)
-        self.is_staff = True
-        self.is_superuser = True
-
-        if extra_fields.get('is_superuser') and extra_fields.get('is_staff') is not True:
-            raise ValueError(
-                'Superuser must have is_superuser and is_staff=True.')
-=======
     def create_superuser(self, email, full_name, password=None, **extra_fields):
         """
         Creates and saves a superuser with the given email, date of
@@ -65,26 +38,15 @@ class UserManager(BaseUserManager):
         user.is_superuser = True
         user.save(using=self._db)
         return user
->>>>>>> nexta_new
 
         return self._create_user(email, password, **extra_fields)
 
 
-class User(AbstractBaseUser, PermissionsMixin):
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ["full_name"]
-
-<<<<<<< HEAD
-    class Meta:
-        verbose_name = "User Sign Up"
-        verbose_name_plural = "User Sign Up"
-=======
 class User(AbstractBaseUser):
     class Meta:
         verbose_name = "User"
         verbose_name_plural = "User"
     username = None
->>>>>>> nexta_new
     email = models.EmailField(unique=True)
     full_name = models.CharField(max_length=50)
     date_joined = models.DateTimeField(
@@ -99,14 +61,11 @@ class User(AbstractBaseUser):
     is_superuser = models.BooleanField(default=False)
 
     objects = UserManager()
-<<<<<<< HEAD
-=======
 
     # This overwrites django's default user model's username to a
     # username of choice
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ["full_name"]
->>>>>>> nexta_new
 
     def __str__(self):
         return self.full_name
@@ -122,11 +81,6 @@ class User(AbstractBaseUser):
         return True
 
 
-<<<<<<< HEAD
-
-
-class RecentTransactions(models.Model):
-=======
 class UserReferralLink(models.Model):
     class Meta:
         verbose_name = "Refferral link"
@@ -136,7 +90,6 @@ class UserReferralLink(models.Model):
 
 
 class RecentTransaction(models.Model):
->>>>>>> nexta_new
     class Meta:
         verbose_name = "Recent Transactions"
         verbose_name_plural = "Recent Transactions"

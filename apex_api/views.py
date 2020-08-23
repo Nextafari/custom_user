@@ -5,11 +5,11 @@ from rest_framework import permissions, status
 from rest_framework.generics import CreateAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework.authtoken.serializers import AuthTokenSerializer
 from knox.views import LoginView as knox_login_view
 from django.contrib.auth import login
 from .models import User, RecentTransaction
-from .serializers import UserSerializer, UserLoginSerializer, RecentTransactionSerializer
+from .serializers import (
+    UserSerializer, UserLoginSerializer, RecentTransactionSerializer)
 
 
 class CreateUserView(CreateAPIView):
