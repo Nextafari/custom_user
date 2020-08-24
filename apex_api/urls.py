@@ -1,4 +1,5 @@
 from django.urls import path
+from knox import views as knox_views
 from . import views
 
 urlpatterns = [
@@ -9,7 +10,13 @@ urlpatterns = [
         'login/', views.UserLogin.as_view(), name="User login"
     ),
     path(
-        'transactions/', views.RecentTransactions.as_view(), 
+        'transactions/', views.RecentTransactions.as_view(),
         name="Recent Transactions"
+    ),
+    path(
+        'logout/', knox_views.LogoutView.as_view(), name="Log out"
+    ),
+    path(
+        'logout_all/', knox_views.LogoutAllView.as_view(), name="Log out all"
     )
 ]

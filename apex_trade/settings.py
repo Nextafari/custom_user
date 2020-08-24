@@ -65,6 +65,11 @@ REST_FRAMEWORK = {
     ]
 }
 
+REST_KNOX = {
+    # 'TOKEN_TTL': timedelta(hours=10000),
+    'USER_SERIALIZER': 'apex_api.serializers.UserLoginSerializer',
+}
+
 
 # REST_AUTH_SERIALIZERS = {
 #     "USER_DETAILS_SERIALIZER": "apex_api.serializers.CustomUserDetailsSerializer",
