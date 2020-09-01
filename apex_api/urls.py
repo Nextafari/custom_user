@@ -13,8 +13,14 @@ urlpatterns = [
         'transactions/', views.RecentTransactions.as_view(),
         name="Recent Transactions"
     ),
+    # path(
+    #     'logout', knox_views.LogoutView.as_view(), name="Log out"
+    # ),
     path(
-        'logout', knox_views.LogoutView.as_view(), name="Log out"
+        'logout', views.LogoutView.as_view(), name="Logout view"
+    ),
+    path(
+        'dashboard/', views.template_view, name="Dash board"
     ),
     path(
         'logout_all/', knox_views.LogoutAllView.as_view(), name="Log out all"

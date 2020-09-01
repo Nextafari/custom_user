@@ -10,7 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+
 from pathlib import Path
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
@@ -68,6 +70,7 @@ REST_FRAMEWORK = {
 REST_KNOX = {
     # 'TOKEN_TTL': timedelta(hours=10000),
     'USER_SERIALIZER': 'apex_api.serializers.UserLoginSerializer',
+    'TOKEN_TTL': timedelta(minutes=30)
 }
 
 
@@ -95,7 +98,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            #"./templates", os.path.join(BASE_DIR, "templates")
+            # './templates', Path.joinpath(BASE_DIR, "templates")
         ],
         'APP_DIRS': True,
         'OPTIONS': {
