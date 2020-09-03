@@ -70,12 +70,3 @@ class UserDetail(RetrieveUpdateDestroyAPIView):
     def get_queryset(self):
         user = self.request.user
         return User.objects.filter(full_name=user)
-
-
-# {
-#     "referral_code": "foo_b",
-#     "full_name": "Foo bar",
-#     "email": "f@example.com",
-#     "password1": "foob2345",
-#     "password2": "foob2345"
-# }
