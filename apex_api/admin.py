@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import User, RecentTransaction, UserReferralLink
+from .models import User, RecentTransaction, UserReferralLink, UserTransaction
 
 
 class UserReg(admin.ModelAdmin):
@@ -27,3 +27,13 @@ class RecentTrans(admin.ModelAdmin):
 
 
 admin.site.register(RecentTransaction, RecentTrans)
+
+
+class UserTrans(admin.ModelAdmin):
+    list_display = [
+        'user', 'date', 'type_of_transaction', 'amount', 'payment_method',
+        'amount_in_btc', 'details'
+    ]
+
+
+admin.site.register(UserTransaction, UserTrans)

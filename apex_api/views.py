@@ -1,22 +1,21 @@
-from django.shortcuts import render
-#from django.contrib.auth import authenticate
-from django.contrib.auth import get_user_model
-from rest_framework import permissions
-from rest_framework.generics import CreateAPIView
+# from django.contrib.auth import authenticate
+# from django.shortcuts import render
+import json
+from django.contrib.auth import get_user_model, login, logout
+from django.core.serializers import serialize
+from knox.views import LoginView as knox_login_view
+from rest_framework import permissions, status
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from knox.views import LoginView as knox_login_view
-from django.contrib.auth import login, logout
-from .models import RecentTransaction
-from .serializers import (
-    UserSerializer, UserLoginSerializer, RecentTransactionSerializer
-)
-from rest_framework.authentication import TokenAuthentication
-from rest_framework import status
+from .models import RecentTransaction, User, UserTransaction
+from .serializers import (RecentTransactionSerializer, UserLoginSerializer,
+                          UserSerializer, UserTranactionSerializer)
 
 
 class CreateUserView(CreateAPIView):
-
     custom_model = get_user_model()
     permission_classes = [
         permissions.AllowAny  # Or anon users can't register
@@ -43,18 +42,36 @@ class RecentTransactions(APIView):
 
 
 class LogoutView(APIView):
+    """Custom logout view"""
     authentication_classes = [TokenAuthentication]
-    
+
     def post(self, request):
         logout(request)
         return Response(
-            {'message': "Logout successful"}, status=status.HTTP_204_NO_CONTENT
+            {'message': "Logout successful"},
+            status=status.HTTP_204_NO_CONTENT
         )
 
 
+class UserTransactionView(APIView):
+    """Retrieves User's personal Transaction"""
+    permission_classes = [IsAuthenticated]
 
-def template_view(request):
-    return render(request, 'dashboard.html', {})
+    def get(self, request, pk):
+        transactions = UserTransaction.objects.filter(pk=pk)
+        serializer = UserTranactionSerializer(transactions, many=True)
+        return Response(serializer.data)
+
+
+class UserDetail(RetrieveUpdateDestroyAPIView):
+    """Retrieve's user"""
+    permission_classes = [IsAuthenticated]
+    serializer_class = UserSerializer
+    lookup_field = 'id'
+    
+    def get_queryset(self):
+        user = self.request.user
+        return User.objects.filter(full_name=user)
 
 
 # {

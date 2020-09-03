@@ -84,7 +84,7 @@ class UserReferralLink(models.Model):
     class Meta:
         verbose_name = "Refferral link"
         verbose_name_plural = "Referral link"
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
     referral_link = models.CharField(max_length=100)
 
 
@@ -122,3 +122,29 @@ class RecentTransaction(models.Model):
 
     def __str__(self):
         return self.merchant
+
+
+class UserTransaction(models.Model):
+    class Meta:
+        verbose_name = "User Transactions"
+        verbose_name_plural = "User Transactions"
+    TRANSACTION_TYPE_CHOICES = (
+        ("Deposit", "Deposit"),
+        ("Withdrawal", "Withdrawal")
+    )
+    DETAIL_CHOICES = (
+        ("Deposit to wallet", "Deposit to wallet"),
+        ("Withdrawal from wallet", "Withdrawal from wallet")
+    )
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=True)
+    type_of_transaction = models.CharField(
+        max_length=200, choices=TRANSACTION_TYPE_CHOICES
+    )
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    payment_method = models.CharField(max_length=100)
+    amount_in_btc = models.DecimalField(max_digits=10, decimal_places=2)
+    details = models.CharField(max_length=200, choices=DETAIL_CHOICES)
+
+    def __str__(self):
+        return self.type_of_transaction

@@ -4,25 +4,29 @@ from . import views
 
 urlpatterns = [
     path(
-        'register/', views.CreateUserView.as_view(), name="User Registration"
+        'register/', views.CreateUserView.as_view(), name="user_registration"
     ),
     path(
-        'login/', views.UserLogin.as_view(), name="User login"
+        'login', views.UserLogin.as_view(), name="user_login"
     ),
     path(
         'transactions/', views.RecentTransactions.as_view(),
         name="Recent Transactions"
     ),
     # path(
-    #     'logout', knox_views.LogoutView.as_view(), name="Log out"
+    #     'logout', knox_views.LogoutView.as_view(), name="knox_logout"
     # ),
     path(
-        'logout', views.LogoutView.as_view(), name="Logout view"
+        'logout', views.LogoutView.as_view(), name="Logout_view"
     ),
     path(
-        'dashboard/', views.template_view, name="Dash board"
+        'user/<int:id>', views.UserDetail.as_view(), name="get_user"
     ),
     path(
-        'logout_all/', knox_views.LogoutAllView.as_view(), name="Log out all"
+        'user_transaction/<int:pk>', views.UserTransactionView.as_view(),
+        name="user_transaction"
+    ),
+    path(
+        'logout_all/', knox_views.LogoutAllView.as_view(), name="logout_all"
     )
 ]

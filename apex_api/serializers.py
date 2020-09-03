@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, RecentTransaction
+from .models import User, RecentTransaction, UserTransaction
 from django.contrib.auth import authenticate
 from django.contrib.auth import get_user_model  # If used custom user model
 
@@ -54,4 +54,14 @@ class RecentTransactionSerializer(serializers.ModelSerializer):
         fields = [
             "status", "date", "merchant", "transaction_type", "amount", 
             "currency", "tokens", "details"
+        ]
+
+
+class UserTranactionSerializer(serializers.ModelSerializer):
+    """Gets each user's transaction details"""
+    class Meta:
+        model = UserTransaction
+        fields = [
+            'date', 'type_of_transaction', 'amount', 'payment_method',
+            'amount_in_btc', 'details'
         ]
