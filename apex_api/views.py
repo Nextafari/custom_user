@@ -1,8 +1,6 @@
 # from django.contrib.auth import authenticate
 # from django.shortcuts import render
-import json
 from django.contrib.auth import get_user_model, login, logout
-from django.core.serializers import serialize
 from knox.views import LoginView as knox_login_view
 from rest_framework import permissions, status
 from rest_framework.authentication import TokenAuthentication
