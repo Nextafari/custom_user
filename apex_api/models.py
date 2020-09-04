@@ -148,3 +148,14 @@ class UserTransaction(models.Model):
 
     def __str__(self):
         return self.type_of_transaction
+
+
+class Profile(models.Model):
+    class Meta:
+        verbose_name = "Profile"
+        verbose_name_plural = "Profile"
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    image = models.ImageField(default="", upload_to="profile_pics")
+
+    def __str__(self):
+        return f"{self.user.full_name} Profile"

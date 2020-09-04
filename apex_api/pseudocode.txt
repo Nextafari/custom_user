@@ -1,3 +1,0 @@
-Create db models (user registration and transaction tables)
-write views for user registration(auth), user login, user logout
-write functions for user profile(dashboard), user edit profile, and user delete

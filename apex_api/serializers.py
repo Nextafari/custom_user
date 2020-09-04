@@ -1,5 +1,7 @@
 from rest_framework import serializers
-from .models import User, RecentTransaction, UserTransaction
+from .models import (
+    User, RecentTransaction, UserTransaction, Profile
+)
 from django.contrib.auth import authenticate
 from django.contrib.auth import get_user_model  # If used custom user model
 
@@ -65,3 +67,9 @@ class UserTranactionSerializer(serializers.ModelSerializer):
             'date', 'type_of_transaction', 'amount', 'payment_method',
             'amount_in_btc', 'details'
         ]
+
+
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        

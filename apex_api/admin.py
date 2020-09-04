@@ -1,5 +1,8 @@
 from django.contrib import admin
-from .models import User, RecentTransaction, UserReferralLink, UserTransaction
+from .models import (
+    User, RecentTransaction, UserReferralLink, UserTransaction,
+    Profile
+)
 
 
 class UserReg(admin.ModelAdmin):
@@ -37,3 +40,12 @@ class UserTrans(admin.ModelAdmin):
 
 
 admin.site.register(UserTransaction, UserTrans)
+
+
+class UserProfile(admin.ModelAdmin):
+    list_display = [
+        "user", "image"
+    ]
+
+
+admin.site.register(Profile, UserProfile)

@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 # drf_yasg settings
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
@@ -41,6 +43,13 @@ urlpatterns = [
     path('', include('apex_api.urls')),
     # path('rest-auth/', include('rest_auth.urls')),
     # path('rest-auth/registration/', include('rest_auth.registration.urls'))
-    path('', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
-    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
-]
+    path('', schema_view.with_ui(
+        'swagger', cache_timeout=0), name='schema-swagger-ui'
+    ),
+    path(
+        'redoc/', schema_view.with_ui('redoc', cache_timeout=0),
+        name='schema-redoc'
+    ),
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
