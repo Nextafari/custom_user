@@ -11,6 +11,7 @@ from rest_framework.views import APIView
 from .models import RecentTransaction, User, UserTransaction
 from .serializers import (RecentTransactionSerializer, UserLoginSerializer,
                           UserSerializer, UserTranactionSerializer)
+from drf_yasg.utils import swagger_auto_schema
 
 
 class CreateUserView(CreateAPIView):
@@ -23,7 +24,13 @@ class CreateUserView(CreateAPIView):
 
 class UserLogin(knox_login_view):
     permission_classes = [permissions.AllowAny]
-
+    serializer_class = UserLoginSerializer
+    
+    @swagger_auto_schema(
+        request_body=UserLoginSerializer,
+        operation_description="Logs user in.",
+        responses={200: 'login_response'}
+    )
     def post(self, request, format=None):
         serializer = UserLoginSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)

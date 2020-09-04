@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     # 'allauth',
     # 'allauth.account',
     'knox',
+    'drf_yasg',
 ]
 
 SITE_ID = 1
@@ -75,7 +76,18 @@ REST_FRAMEWORK = {
 REST_KNOX = {
     # 'TOKEN_TTL': timedelta(hours=10000),
     'USER_SERIALIZER': 'apex_api.serializers.UserLoginSerializer',
-    'TOKEN_TTL': timedelta(minutes=30)
+    'TOKEN_TTL': timedelta(minutes=15)
+}
+
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        "Auth Token": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    }
 }
 
 
