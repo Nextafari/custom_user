@@ -72,4 +72,6 @@ class UserTranactionSerializer(serializers.ModelSerializer):
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
-        
+        fields = [
+            "user", "image"
+        ]

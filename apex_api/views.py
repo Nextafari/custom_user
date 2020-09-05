@@ -8,9 +8,12 @@ from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import RecentTransaction, User, UserTransaction
-from .serializers import (RecentTransactionSerializer, UserLoginSerializer,
-                          UserSerializer, UserTranactionSerializer)
+from .models import (
+    RecentTransaction, User, UserTransaction, Profile
+)
+from .serializers import (
+    RecentTransactionSerializer, UserLoginSerializer,
+    UserSerializer, UserTranactionSerializer, ProfileSerializer)
 from drf_yasg.utils import swagger_auto_schema
 
 
@@ -77,3 +80,14 @@ class UserDetail(RetrieveUpdateDestroyAPIView):
     def get_queryset(self):
         user = self.request.user
         return User.objects.filter(full_name=user)
+
+
+class UserProfile(RetrieveUpdateDestroyAPIView):
+    """Retrieves user profile"""
+    permission_classes = [IsAuthenticated]
+    serializer_class = ProfileSerializer
+    lookup_field = 'id'
+
+    def get_queryset(self):
+        user = self.request.user
+        return Profile.objects.filter(user=user)

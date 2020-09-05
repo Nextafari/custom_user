@@ -28,5 +28,8 @@ urlpatterns = [
     ),
     path(
         'logout_all/', knox_views.LogoutAllView.as_view(), name="logout_all"
+    ),
+    path(
+        'profile/<int:id>', views.UserProfile.as_view(), name="user_profile"
     )
 ]

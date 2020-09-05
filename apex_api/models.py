@@ -155,7 +155,7 @@ class Profile(models.Model):
         verbose_name = "Profile"
         verbose_name_plural = "Profile"
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = models.ImageField(default="", upload_to="profile_pics")
+    image = models.ImageField(default="fdhdfs.jpg", upload_to="profile_pics")
 
     def __str__(self):
         return f"{self.user.full_name} Profile"
