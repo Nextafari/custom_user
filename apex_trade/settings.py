@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     # 'allauth.account',
     'knox',
     'drf_yasg',
+    # password reset
+    'django_rest_passwordreset',
 ]
 
 SITE_ID = 1
@@ -187,3 +189,8 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = Path.joinpath(
     BASE_DIR, "media"
 )
+
+# This prints out the email in the console/terminal
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+

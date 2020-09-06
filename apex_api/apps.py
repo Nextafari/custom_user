@@ -6,4 +6,3 @@ class ApexApiConfig(AppConfig):
 
     def ready(self):
         import apex_api.signals
-        
