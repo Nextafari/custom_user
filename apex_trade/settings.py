@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'apex_api',
+    'chart',
     'rest_framework',
     # 'allauth',
     # 'allauth.account',
