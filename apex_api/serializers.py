@@ -54,7 +54,7 @@ class RecentTransactionSerializer(serializers.ModelSerializer):
     class Meta:
         model = RecentTransaction
         fields = [
-            "status", "date", "merchant", "transaction_type", "amount", 
+            "status", "date", "merchant", "transaction_type", "amount",
             "currency", "tokens", "details"
         ]
 
