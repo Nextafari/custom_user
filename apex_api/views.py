@@ -54,7 +54,14 @@ class LogoutView(APIView):
     authentication_classes = [TokenAuthentication]
 
     def post(self, request):
+        print("this is my story 1")
+        try:
+            request.user.auth_token.delete()
+        except (AttributeError, ObjectDoesNotExist):
+            pass
+        print("this is my story 2")
         logout(request)
+        print("this is my story 3")
         return Response(
             {'message': "Logout successful"},
             status=status.HTTP_204_NO_CONTENT

@@ -11,14 +11,14 @@ urlpatterns = [
     ),
     path(
         'transactions/', views.RecentTransactions.as_view(),
-        name="Recent Transactions"
+        name="recent_transactions"
+    ),
+    path(
+        'logout/', knox_views.LogoutView.as_view(), name="knox_logout"
     ),
     # path(
-    #     'logout', knox_views.LogoutView.as_view(), name="knox_logout"
+    #     'logout/', views.LogoutView.as_view(), name="Logout_view"
     # ),
-    path(
-        'logout', views.LogoutView.as_view(), name="Logout_view"
-    ),
     path(
         'user/<int:id>', views.UserDetail.as_view(), name="get_user"
     ),

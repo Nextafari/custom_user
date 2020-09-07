@@ -44,7 +44,7 @@ admin.site.register(UserTransaction, UserTrans)
 
 class UserProfile(admin.ModelAdmin):
     list_display = [
-        "user", "image"
+        "user", "image", "trading_code"
     ]
 
 

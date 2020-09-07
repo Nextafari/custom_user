@@ -73,5 +73,5 @@ class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
         fields = [
-            "user", "image"
+            "user", "image", "trading_code"
         ]
