@@ -5,6 +5,7 @@ from django.dispatch import receiver
 from django.urls import reverse
 from django_rest_passwordreset.signals import reset_password_token_created
 from django.core.mail import send_mail
+from django.conf import settings
 
 from .models import Profile, User
 
@@ -65,11 +66,11 @@ def password_reset_token_created(sender, instance, reset_password_token, *args, 
 
     send_mail(
         # subject:
-        "Password Reset for {title}".format(title="Some website title"),
+        "Password Reset for {title}".format(title="User Account"),
         # message:
         email_plaintext_message,
         # from:
-        "immanuelhng@gmail.com",
+        settings.EMAIL_HOST_USER,
         # to:
         [reset_password_token.user.email]
     )

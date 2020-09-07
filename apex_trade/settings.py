@@ -10,7 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
-
+import os
+import django_heroku
 from pathlib import Path
 from datetime import timedelta
 
@@ -191,6 +192,14 @@ MEDIA_ROOT = Path.joinpath(
 )
 
 # This prints out the email in the console/terminal
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')  # this is exactly the value 'apikey'
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
 
+# Activate Django-Heroku.
+django_heroku.settings(locals())
