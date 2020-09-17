@@ -13,7 +13,8 @@ from .models import (
 )
 from .serializers import (
     RecentTransactionSerializer, UserLoginSerializer,
-    UserSerializer, UserTranactionSerializer, ProfileSerializer)
+    UserSerializer, UserTranactionSerializer, ProfileSerializer
+)
 from drf_yasg.utils import swagger_auto_schema
 
 

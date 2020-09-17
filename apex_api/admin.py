@@ -34,7 +34,7 @@ admin.site.register(RecentTransaction, RecentTrans)
 
 class UserTrans(admin.ModelAdmin):
     list_display = [
-        'user', 'date', 'type_of_transaction', 'amount', 'payment_method',
+        'user', 'date', 'transaction_type', 'amount', 'payment_method',
         'amount_in_btc', 'details'
     ]
 

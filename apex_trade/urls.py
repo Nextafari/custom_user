@@ -51,7 +51,10 @@ urlpatterns = [
         name='schema-redoc'
     ),
     path(
-        '', include('chart.urls'), name="Chart"
+        '', include('chart.urls'), name="chart"
+    ),
+    path(
+        '', include('wallet.urls'), name="wallet"
     ),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
