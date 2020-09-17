@@ -5,6 +5,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from .serializers import UserWalletSerializer
 from drf_yasg.utils import swagger_auto_schema
+from django.core.mail import send_mail
+from django.conf import settings
 
 
 # Create your views here.
@@ -34,6 +36,15 @@ class Deposit(APIView):
                 amount_in_btc=serializer.validated_data.get("amount_in_btc")
             )
             deposit.save()
+            user = request.user
+            amount = serializer.validated_data.get("amount")
+            amount_in_btc = serializer.validated_data.get("amount_in_btc")
+            send_mail(
+                "Deposit Alert",
+                f'{user} just created a deposit of ${amount} equivalent to BTC{amount_in_btc} change status from pending to approved',
+                settings.EMAIL_HOST_USER,
+                ['chinedue16@gmail.com']
+            )
             return Response(
                 {
                     'data': "Done!! Awaiting approval"
