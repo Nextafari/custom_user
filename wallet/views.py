@@ -50,3 +50,9 @@ class Deposit(APIView):
                     'data': "Done!! Awaiting approval"
                 }
             )
+
+"""
+Set up a mailgun account for the website, 
+checkout linode for hosting the backend and also the frontend of the web(react)
+Deploy the backend to linode
+"""
