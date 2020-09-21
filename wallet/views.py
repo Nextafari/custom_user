@@ -81,8 +81,3 @@ class Withdraw(APIView):
                 },
                 status=status.HTTP_200_OK
             )
-
-"""
-Set up a mailgun account for the website, 
-checkout linode for hosting the backend and also the frontend of the web(react)
-"""
