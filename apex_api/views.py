@@ -23,7 +23,24 @@ class CreateUserView(CreateAPIView):
     permission_classes = [
         permissions.AllowAny  # Or anon users can't register
     ]
-    serializer_class = UserSerializer
+    # serializer_class = UserSerializer
+
+    def post(self, request):
+        serializer = UserSerializer(data=request.data)
+        if request.method == "POST":
+            serializer.is_valid(raise_exception=True)
+            user = User.objects.create(
+                email=serializer.validated_data.get('email'),
+                full_name=serializer.validated_data.get('full_name'),
+            )
+            user.set_password(serializer.validated_data.get('password'))
+            user.save()
+            return Response(
+                {
+                    "data": "User created"
+                },
+                status=status.HTTP_201_CREATED
+            )
 
 
 class UserLogin(knox_login_view):

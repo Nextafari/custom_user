@@ -13,16 +13,16 @@ class UserSerializer(serializers.ModelSerializer):
 
     password = serializers.CharField(write_only=True)
 
-    def create(self, validated_data):
+    # def create(self, validated_data):
 
-        user = User.objects.create(
-            email=validated_data['email'],
-            full_name=validated_data['full_name'],
-        )
-        user.set_password(validated_data['password'])
-        user.save()
+    #     user = User.objects.create(
+    #         email=validated_data['email'],
+    #         full_name=validated_data['full_name'],
+    #     )
+    #     user.set_password(validated_data['password'])
+    #     user.save()
 
-        return user
+    #     return user
 
     class Meta:
         model = User
