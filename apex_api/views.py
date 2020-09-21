@@ -23,7 +23,7 @@ class CreateUserView(CreateAPIView):
     permission_classes = [
         permissions.AllowAny  # Or anon users can't register
     ]
-    # serializer_class = UserSerializer
+    serializer_class = UserSerializer
 
     def post(self, request):
         serializer = UserSerializer(data=request.data)
