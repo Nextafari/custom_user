@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import (
-    User, RecentTransaction, UserReferralLink, UserTransaction,
+    User, RecentTransaction, UserTransaction,
     Profile
 )
 
@@ -13,13 +13,6 @@ class UserReg(admin.ModelAdmin):
 
 
 admin.site.register(User, UserReg)
-
-
-class UserRefLink(admin.ModelAdmin):
-    list_diplay = ["referral_link"]
-
-
-admin.site.register(UserReferralLink, UserRefLink)
 
 
 class RecentTrans(admin.ModelAdmin):

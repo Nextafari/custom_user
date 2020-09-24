@@ -64,7 +64,7 @@ class UserTranactionSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserTransaction
         fields = [
-            'date', 'type_of_transaction', 'amount', 'payment_method',
+            'date', 'transaction_type', 'amount', 'payment_method',
             'amount_in_btc', 'details'
         ]
 

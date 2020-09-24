@@ -82,14 +82,6 @@ class User(AbstractBaseUser):
         return True
 
 
-class UserReferralLink(models.Model):
-    class Meta:
-        verbose_name = "Refferral link"
-        verbose_name_plural = "Referral link"
-    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
-    referral_link = models.CharField(max_length=100)
-
-
 class RecentTransaction(models.Model):
     class Meta:
         verbose_name = "Recent Transactions"
@@ -150,7 +142,7 @@ class UserTransaction(models.Model):
     details = models.CharField(max_length=200, choices=DETAIL_CHOICES)
 
     def __str__(self):
-        return self.type_of_transaction
+        return self.transaction_type
 
 
 def create_trading_code():

@@ -90,8 +90,9 @@ class UserTransactionView(APIView):
     """Retrieves User's personal Transaction"""
     permission_classes = [IsAuthenticated]
 
-    def get(self, request, pk):
-        transactions = UserTransaction.objects.filter(pk=pk)
+    def get(self, request):
+        user = self.request.user
+        transactions = UserTransaction.objects.filter(user=user)
         serializer = UserTranactionSerializer(transactions, many=True)
         return Response(serializer.data)
 
@@ -116,3 +117,11 @@ class UserProfile(RetrieveUpdateDestroyAPIView):
     def get_queryset(self):
         user = self.request.user
         return Profile.objects.filter(user=user)
+
+
+class UserAmount(APIView):
+    def get(self, request, pk):
+        amount = UserTransaction.objects.filter(pk=pk)
+        amount_1 = amount.filter(amount='amount')
+        serializer = UserTranactionSerializer(amount_1)
+        return Response(serializer.data)

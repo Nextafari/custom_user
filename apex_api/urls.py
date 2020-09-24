@@ -23,7 +23,7 @@ urlpatterns = [
         'user/<int:id>', views.UserDetail.as_view(), name="get_user"
     ),
     path(
-        'user_transaction/<int:pk>', views.UserTransactionView.as_view(),
+        'user_transaction', views.UserTransactionView.as_view(),
         name="user_transaction"
     ),
     path(
@@ -36,4 +36,5 @@ urlpatterns = [
         'api/password_reset/',
         include('django_rest_passwordreset.urls', namespace='password_reset')
     ),
+    path('amount/<int:pk>', views.UserAmount.as_view(), name="user_amount"),
 ]
