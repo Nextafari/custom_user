@@ -97,31 +97,42 @@ class UserTransactionView(APIView):
         return Response(serializer.data)
 
 
-class UserDetail(RetrieveUpdateDestroyAPIView):
-    """Retrieve's user"""
-    permission_classes = [IsAuthenticated]
-    serializer_class = UserSerializer
-    lookup_field = 'id'
+# class UserDetail(RetrieveUpdateDestroyAPIView):
+#     """Retrieve's user"""
+#     permission_classes = [IsAuthenticated]
+#     serializer_class = UserSerializer
+#     lookup_field = 'id'
            
-    def get_queryset(self):
-        user = self.request.user
-        return User.objects.filter(full_name=user)
+#     def get_queryset(self):
+#         user = self.request.user
+#         return User.objects.filter(full_name=user)
 
 
 class UserProfile(RetrieveUpdateDestroyAPIView):
     """Retrieves user profile"""
     permission_classes = [IsAuthenticated]
-    serializer_class = ProfileSerializer
-    lookup_field = 'id'
 
-    def get_queryset(self):
-        user = self.request.user
-        return Profile.objects.filter(user=user)
+    def get(self, request):
+        full_name = self.request.user.full_name
+        image = self.request.user.profile.image.url
+        trading_code = self.request.user.profile.trading_code
+        return Response(
+            {"data":
+                {
+                    "full_name": full_name,
+                    "image": image,
+                    "trading_code": trading_code
+                }},
+            status=status.HTTP_200_OK
+        )
 
 
 class UserAmount(APIView):
-    def get(self, request, pk):
-        amount = UserTransaction.objects.filter(pk=pk)
-        amount_1 = amount.filter(amount='amount')
-        serializer = UserTranactionSerializer(amount_1)
+    def get(self, request):
+        user = self.request.user
+        # amount = UserTransaction.objects.filter(user=user)
+        amount = UserTransaction.objects.get(amount=user.UserTransaction.amount)
+        # amount = UserTransaction.objects.get(user=user, amount=amount)
+        # amount_1 = amount.filter(amount=user.usertransaction.amount)
+        serializer = UserTranactionSerializer(amount, many=True)
         return Response(serializer.data)
