@@ -147,11 +147,10 @@ class UserId(APIView):
 
 
 class UserAmount(APIView):
+    permission_classes = [IsAuthenticated]
+
     def get(self, request):
         user = self.request.user
-        # amount = UserTransaction.objects.filter(user=user)
-        amount = UserTransaction.objects.get(amount=user.UserTransaction.amount)
-        # amount = UserTransaction.objects.get(user=user, amount=amount)
-        # amount_1 = amount.filter(amount=user.usertransaction.amount)
-        serializer = UserTranactionSerializer(amount, many=True)
-        return Response(serializer.data)
+        user_1 = UserTransaction.objects.filter(user=user).values_list('amount')
+        amount = user_1[0]
+        return Response(amount)

@@ -2,7 +2,7 @@ from rest_framework.views import APIView
 from apex_api.models import UserTransaction
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import UserWalletSerializer
+from .serializers import UserWalletSerializer, UserAmount
 from drf_yasg.utils import swagger_auto_schema
 from django.core.mail import send_mail
 from django.conf import settings
@@ -81,3 +81,18 @@ class Withdraw(APIView):
                 },
                 status=status.HTTP_200_OK
             )
+
+
+# class UserAmount(APIView):
+#     permission_classes = [IsAuthenticated]
+#     def get(self, request):
+#         serial
+#             deposit = 0
+#             withdrawal = 0
+#             initial_balance = 0
+#             if self.transaction_type == "deposit":
+#                 balance = deposit + 0
+#                 return balance
+#             elif self.transaction_type ==withdrawal:
+#                 balance = deposit - withdrawal
+#                 return balance

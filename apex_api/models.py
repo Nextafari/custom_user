@@ -60,7 +60,7 @@ class User(AbstractBaseUser):
     is_admin = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
-
+    
     objects = UserManager()
 
     # This overwrites django's default user model's username to a

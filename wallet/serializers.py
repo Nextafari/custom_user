@@ -8,3 +8,11 @@ class UserWalletSerializer(serializers.ModelSerializer):
         fields = [
             "amount", "amount_in_btc"
         ]
+
+
+class UserAmount(serializers.ModelSerializer):
+    class Meta:
+        model = UserTransaction
+        fields = [
+            "amount"
+        ]
