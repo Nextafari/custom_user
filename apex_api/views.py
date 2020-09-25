@@ -108,7 +108,7 @@ class UserTransactionView(APIView):
 #         return User.objects.filter(full_name=user)
 
 
-class UserProfile(RetrieveUpdateDestroyAPIView):
+class UserProfile(APIView):
     """Retrieves user profile"""
     permission_classes = [IsAuthenticated]
 
@@ -125,6 +125,25 @@ class UserProfile(RetrieveUpdateDestroyAPIView):
                 }},
             status=status.HTTP_200_OK
         )
+
+
+class EditUserProfile(RetrieveUpdateDestroyAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = UserSerializer
+    lookup_field = "id"
+
+    def get_queryset(self):
+        user = self.request.user
+        return User.objects.filter(full_name=user)
+
+
+class UserId(APIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = UserSerializer
+
+    def get(self, request):
+        user_id = self.request.user.id
+        return Response(user_id)
 
 
 class UserAmount(APIView):
