@@ -1,20 +1,7 @@
 from django.db import models
+from apex_api.models import User
 
 
-# class UserTransaction(models.Model):
-#     class Meta:
-#         verbose_name = "User Transaction"
-#         verbose_name_plural = "User Transactions"
-#     STATUS = (
-#         ("Pending", "Pending"),
-#         ("Paid", "Paid")
-#     )
-#     TRANSACTION_TYPE = (
-#         ("Deposit")
-#     )
-#     status = 
-#     date
-#     transaction_type
-#     amount
-#     currency
-#     tokens
+class UserAmount(models.Model):
+    user = models.OneToOneField(to=User, on_delete=models.CASCADE)
+    user_amount = models.DecimalField(max_digits=19, decimal_places=2)

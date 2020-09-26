@@ -10,7 +10,7 @@ class UserWalletSerializer(serializers.ModelSerializer):
         ]
 
 
-class UserAmount(serializers.ModelSerializer):
+class UserAmountSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserTransaction
         fields = [

@@ -114,12 +114,14 @@ class UserProfile(APIView):
 
     def get(self, request):
         full_name = self.request.user.full_name
+        email = self.request.user.email
         image = self.request.user.profile.image.url
         trading_code = self.request.user.profile.trading_code
         return Response(
             {"data":
                 {
                     "full_name": full_name,
+                    "email": email,
                     "image": image,
                     "trading_code": trading_code
                 }},

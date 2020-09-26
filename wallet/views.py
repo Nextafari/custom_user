@@ -2,7 +2,7 @@ from rest_framework.views import APIView
 from apex_api.models import UserTransaction
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import UserWalletSerializer, UserAmount
+from .serializers import UserWalletSerializer, UserAmountSerializer
 from drf_yasg.utils import swagger_auto_schema
 from django.core.mail import send_mail
 from django.conf import settings
@@ -26,7 +26,7 @@ class Deposit(APIView):
                 transaction_type="Deposit",
                 amount=serializer.validated_data.get("amount"),
                 payment_method="BTC",
-                amount_in_btc=serializer.validated_data.get("amount_in_btc")
+                amount_in_btc=serializer.validated_data.get("amount_in_btc"),
             )
             deposit.save()
             user = request.user
@@ -50,7 +50,7 @@ class Withdraw(APIView):
     permission_classes = [IsAuthenticated]
     @swagger_auto_schema(
         request_body=UserWalletSerializer,
-        operation_description="Withdraw",
+        operation_description="Withdrawal",
         responses={201: 'Created'}
     )
     def post(self, request):
@@ -60,7 +60,7 @@ class Withdraw(APIView):
             deposit = UserTransaction.objects.create(
                 user=request.user,
                 status="Pending",
-                transaction_type="Withdraw",
+                transaction_type="Withdrawal",
                 amount=serializer.validated_data.get("amount"),
                 payment_method="BTC",
                 amount_in_btc=serializer.validated_data.get("amount_in_btc")
@@ -83,16 +83,5 @@ class Withdraw(APIView):
             )
 
 
-# class UserAmount(APIView):
-#     permission_classes = [IsAuthenticated]
-#     def get(self, request):
-#         serial
-#             deposit = 0
-#             withdrawal = 0
-#             initial_balance = 0
-#             if self.transaction_type == "deposit":
-#                 balance = deposit + 0
-#                 return balance
-#             elif self.transaction_type ==withdrawal:
-#                 balance = deposit - withdrawal
-#                 return balance
+class UserAmount(APIView):
+    pass

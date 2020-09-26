@@ -144,9 +144,20 @@ class UserTransaction(models.Model):
     def __str__(self):
         return self.transaction_type
 
+    def user_balance(self):
+        initial_balance = 0
+        if self.transaction_type == "Deposit":
+            initial_balance = self.amount + initial_balance
+            return initial_balance
+        if self.transaction_type == "Withdrawal":
+            initial_balance = initial_balance
+            current_balance = initial_balance - self.amount
+            return current_balance
+  
+    
 
 def create_trading_code():
-    """Creates trading code for user"""
+    """Generates trading code for user"""
     letters = string.ascii_lowercase
     length = 5
     num = random.randrange(0, 10)
