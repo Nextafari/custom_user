@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'apex_api',
     'chart',
+    'wallet',
     'rest_framework',
     # 'allauth',
     # 'allauth.account',

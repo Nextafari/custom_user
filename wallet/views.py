@@ -7,6 +7,7 @@ from drf_yasg.utils import swagger_auto_schema
 from django.core.mail import send_mail
 from django.conf import settings
 from rest_framework.permissions import IsAuthenticated
+from .models import UserAmount
 
 
 class Deposit(APIView):
@@ -83,5 +84,8 @@ class Withdraw(APIView):
             )
 
 
-class UserAmount(APIView):
-    pass
+class UserAmountView(APIView):
+    def get(self, request):
+        user = self.request.user
+        amount = UserAmount.objects.filter(user=user).values_list('user_amount')
+        return Response(amount)
