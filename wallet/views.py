@@ -8,10 +8,12 @@ from django.core.mail import send_mail
 from django.conf import settings
 from rest_framework.permissions import IsAuthenticated
 from .models import UserAmount
+from apex_api.models import UserTransaction
 
 
 class Deposit(APIView):
     permission_classes = [IsAuthenticated]
+
     @swagger_auto_schema(
         request_body=UserWalletSerializer,
         operation_description="Deposit",
@@ -49,6 +51,7 @@ class Deposit(APIView):
 
 class Withdraw(APIView):
     permission_classes = [IsAuthenticated]
+
     @swagger_auto_schema(
         request_body=UserWalletSerializer,
         operation_description="Withdrawal",
@@ -88,4 +91,5 @@ class UserAmountView(APIView):
     def get(self, request):
         user = self.request.user
         amount = UserAmount.objects.filter(user=user).values_list('user_amount')
-        return Response(amount)
+        test = UserTransaction().user_balance()
+        return Response(test)
