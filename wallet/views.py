@@ -9,6 +9,7 @@ from django.conf import settings
 from rest_framework.permissions import IsAuthenticated
 from .models import UserAmount
 from apex_api.models import UserTransaction
+from django.http import JsonResponse
 
 
 class Deposit(APIView):
@@ -43,7 +44,7 @@ class Deposit(APIView):
             )
             return Response(
                 {
-                    'data': "Done!! Awaiting approval"
+                    "data": "Done!! Awaiting approval"
                 },
                 status=status.HTTP_200_OK
             )
@@ -61,7 +62,7 @@ class Withdraw(APIView):
         if request.method == "POST":
             serializer = UserWalletSerializer(data=request.data)
             serializer.is_valid(raise_exception=True)
-            deposit = UserTransaction.objects.create(
+            withdraw = UserTransaction.objects.create(
                 user=request.user,
                 status="Pending",
                 transaction_type="Withdrawal",
@@ -69,7 +70,7 @@ class Withdraw(APIView):
                 payment_method="BTC",
                 amount_in_btc=serializer.validated_data.get("amount_in_btc")
             )
-            deposit.save()
+            withdraw.save()
             user = request.user
             amount = serializer.validated_data.get("amount")
             amount_in_btc = serializer.validated_data.get("amount_in_btc")
@@ -81,7 +82,7 @@ class Withdraw(APIView):
             )
             return Response(
                 {
-                    'data': "Done!! Awaiting approval"
+                    "data": "Done!! Awaiting approval"
                 },
                 status=status.HTTP_200_OK
             )
@@ -90,6 +91,12 @@ class Withdraw(APIView):
 class UserAmountView(APIView):
     def get(self, request):
         user = self.request.user
-        amount = UserAmount.objects.filter(user=user).values_list('user_amount')
-        test = UserTransaction().user_balance()
-        return Response(test)
+        user_amount = UserAmount.objects.filter(user=user).values_list(
+            "balance").last()
+        # trans_type = UserAmount.objects.filter(user=user).values_list(
+        #     "transaction_type").last()
+        # return JsonResponse({"data": list(user_amount,)})
+        return Response(
+            {"data": {
+                "user_amount": user_amount}}
+        )

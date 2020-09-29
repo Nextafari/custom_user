@@ -4,7 +4,7 @@ from .models import UserAmount
 
 class UserAmountAdmin(admin.ModelAdmin):
     list_display = [
-        "user", "user_amount"
+        "user", "balance"
     ]
 
 

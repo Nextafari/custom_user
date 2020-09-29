@@ -146,13 +146,3 @@ class UserId(APIView):
     def get(self, request):
         user_id = self.request.user.id
         return Response(user_id)
-
-
-class UserAmount(APIView):
-    permission_classes = [IsAuthenticated]
-
-    def get(self, request):
-        user = self.request.user
-        user_1 = UserTransaction.objects.filter(user=user).values_list('amount')
-        amount = user_1[0]
-        return Response(amount)

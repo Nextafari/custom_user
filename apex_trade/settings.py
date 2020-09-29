@@ -213,9 +213,7 @@ STATICFILES_DIRS = [
     Path.joinpath(BASE_DIR, "static")
 ]
 
-MEDIA_ROOT = Path.joinpath(
-    BASE_DIR, "media"
-)
+MEDIA_ROOT = Path.joinpath(BASE_DIR, "media")
 
 # This prints out the email in the console/terminal
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
