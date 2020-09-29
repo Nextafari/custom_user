@@ -1,7 +1,7 @@
 # from django.core.mail import EmailMultiAlternatives
 import decimal
 
-from django.db.models.signals import post_save, pre_save
+from django.db.models.signals import post_save
 from django.dispatch import receiver
 # from django.template.loader import render_to_string
 from django.urls import reverse
@@ -36,38 +36,41 @@ creating the object and storing the instance in the database.
 """
 
 
-@receiver(pre_save, sender=UserTransaction)
-def create_initial_balance(sender, instance, **kwargs):
-    UserAmount.objects.create(
-        user=instance.user,
-        balance=0.00
-    )
+@receiver(post_save, sender=User)
+def create_initial_balance(sender, instance, created, **kwargs):
+    if created:
+        UserAmount.objects.create(
+            user=instance,
+            balance=0.00
+        )
 
 
 
 @receiver(post_save, sender=UserTransaction)
-def save_transaction(sender, instance, **kwargs):
-    if instance.transaction_type == "Deposit":
-        print("Yes This is a deposit and i will run the code below")
+def save_transaction(sender, instance, created, **kwargs):
+    if created:
+        if instance.transaction_type == "Deposit":
+            print("Yes This is a deposit and i will run the code below")
+            bal_ = UserAmount.objects.filter(user=instance.user).values_list("balance").last()
+            # converting a tuple from the db to a decimal
+            balance = decimal.Decimal(''.join(map(str, bal_)))
+            current_bal = instance.amount + balance
+            UserAmount.objects.create(
+                user=instance.user,
+                balance=current_bal
+            )
         bal_ = UserAmount.objects.filter(user=instance.user).values_list("balance").last()
+        # converting a tuple from the db to a decimal
         balance = decimal.Decimal(''.join(map(str, bal_)))
-        current_bal = instance.amount + balance
-        UserAmount.objects.create(
-            user=instance.user,
-            balance=current_bal
-        )
-    bal_ = UserAmount.objects.filter(user=instance.user).values_list("balance").last()
-    # converting a tuple from the db to a decimal
-    balance = decimal.Decimal(''.join(map(str, bal_)))
-    if instance.transaction_type == "Withdrawal" and (balance) >= instance.amount:
-        print("Yes This is a withdrawal and i will run the code below")
-        balance -= instance.amount
-        UserAmount.objects.create(
-            user=instance.user,
-            balance=balance
-        )
-    else:
-        return "Not valid"
+        if instance.transaction_type == "Withdrawal" and (balance) >= instance.amount:
+            print("Yes This is a withdrawal and i will run the code below")
+            balance -= instance.amount
+            UserAmount.objects.create(
+                user=instance.user,
+                balance=balance
+            )
+        else:
+            return "Not valid"
 
 
 
