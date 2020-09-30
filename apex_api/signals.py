@@ -44,7 +44,6 @@ def create_initial_balance(sender, instance, created, **kwargs):
         )
 
 
-
 @receiver(post_save, sender=UserTransaction)
 def save_transaction(sender, instance, created, **kwargs):
     if created:
