@@ -57,7 +57,7 @@ def save_transaction(sender, instance, created, **kwargs):
                 user=instance.user,
                 balance=current_bal
             )
-            
+
         # Fetches the users latest transaction balance from the db for update
         bal_ = UserAmount.objects.filter(user=instance.user).values_list("balance").last()
         # converting a tuple from the db to a decimal
@@ -72,43 +72,6 @@ def save_transaction(sender, instance, created, **kwargs):
         else:
             return "Not valid"
 
-
-
-# @receiver(reset_password_token_created)
-# def password_reset_token_created(sender, instance, reset_password_token, *args, **kwargs):
-#     """
-#     Handles password reset tokens
-#     When a token is created, an e-mail needs to be sent to the user
-#     :param sender: View Class that sent the signal
-#     :param instance: View Instance that sent the signal
-#     :param reset_password_token: Token Model Object
-#     :param args:
-#     :param kwargs:
-#     :return:
-#     """
-#     # send an e-mail to the user
-#     context = {
-#         'current_user': reset_password_token.user,
-#         'email': reset_password_token.user.email,
-#         'reset_password_url': "{}?token={}".format(reverse('password_reset:reset-password-request'), reset_password_token.key)
-#     }
-
-#     # render email text
-#     email_html_message = render_to_string('email/user_reset_password.html', context)
-#     email_plaintext_message = render_to_string('email/user_reset_password.txt', context)
-
-#     msg = EmailMultiAlternatives(
-#         # title:
-#         "Password Reset for {title}".format(title="Some website title"),
-#         # message:
-#         email_plaintext_message,
-#         # from:
-#         "noreply@somehost.local",
-#         # to:
-#         [reset_password_token.user.email]
-#     )
-#     msg.attach_alternative(email_html_message, "text/html")
-#     msg.send()
 
 @receiver(reset_password_token_created)
 def password_reset_token_created(sender, instance, reset_password_token, *args, **kwargs):
