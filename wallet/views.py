@@ -7,7 +7,7 @@ from drf_yasg.utils import swagger_auto_schema
 from django.core.mail import send_mail
 from django.conf import settings
 from rest_framework.permissions import IsAuthenticated
-from .models import UserAmount
+from .models import UserAmount, Profit
 from apex_api.models import UserTransaction
 from django.http import JsonResponse
 
@@ -89,6 +89,8 @@ class Withdraw(APIView):
 
 
 class UserAmountView(APIView):
+    permission_classes = [IsAuthenticated]
+
     def get(self, request):
         user = self.request.user
         user_amount = UserAmount.objects.filter(user=user).values_list(
@@ -96,7 +98,25 @@ class UserAmountView(APIView):
         # trans_type = UserAmount.objects.filter(user=user).values_list(
         #     "transaction_type").last()
         # return JsonResponse({"data": list(user_amount,)})
-        return Response(
-            {"data": {
-                "user_amount": user_amount}}
-        )
+        return Response({
+            "data": {
+                "user_amount": user_amount
+            }
+        })
+
+
+class UserProfitView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        user = self.request.user
+        user_profit = Profit.objects.filter(user=user).values_list(
+            "profit").last()
+        user_profit_rate = Profit.objects.filter(user=user).values_list(
+            "percentage_profit_rate").last()
+        return Response({
+            "data": {
+                "user_profit": user_profit,
+                "user_profit_rate": user_profit_rate
+            }
+        })
