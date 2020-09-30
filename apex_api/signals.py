@@ -8,7 +8,6 @@ from django.urls import reverse
 from django_rest_passwordreset.signals import reset_password_token_created
 from django.core.mail import send_mail
 from django.conf import settings
-
 from .models import Profile, User, UserTransaction
 from wallet.models import UserAmount
 
@@ -50,7 +49,7 @@ def create_initial_balance(sender, instance, created, **kwargs):
 def save_transaction(sender, instance, created, **kwargs):
     if created:
         if instance.transaction_type == "Deposit":
-            print("Yes This is a deposit and i will run the code below")
+            # Fetches the users latest transaction balance from the db for update
             bal_ = UserAmount.objects.filter(user=instance.user).values_list("balance").last()
             # converting a tuple from the db to a decimal
             balance = decimal.Decimal(''.join(map(str, bal_)))
@@ -59,6 +58,8 @@ def save_transaction(sender, instance, created, **kwargs):
                 user=instance.user,
                 balance=current_bal
             )
+            
+        # Fetches the users latest transaction balance from the db for update
         bal_ = UserAmount.objects.filter(user=instance.user).values_list("balance").last()
         # converting a tuple from the db to a decimal
         balance = decimal.Decimal(''.join(map(str, bal_)))
