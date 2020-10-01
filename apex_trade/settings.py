@@ -28,7 +28,7 @@ SECRET_KEY = '@-8macq!)f%7qo+okr*x985)&#0f=g41o0pdov%#cp$90ww0+o'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['custom-user-api.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', 'custom-user-api.herokuapp.com']
 
 
 # Application definition
@@ -214,6 +214,14 @@ STATICFILES_DIRS = [
 ]
 
 MEDIA_ROOT = Path.joinpath(BASE_DIR, "media")
+
+STATICFILES_STORAGE = '.storage.WhiteNoiseStaticFilesStorage'
+
+from whitenoise.storage import CompressedManifestStaticFilesStorage
+
+
+class WhiteNoiseStaticFilesStorage(CompressedManifestStaticFilesStorage):
+    manifest_strict = False
 
 # This prints out the email in the console/terminal
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
