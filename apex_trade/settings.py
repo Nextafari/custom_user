@@ -217,11 +217,6 @@ MEDIA_ROOT = Path.joinpath(BASE_DIR, "media")
 
 STATICFILES_STORAGE = '.storage.WhiteNoiseStaticFilesStorage'
 
-from whitenoise.storage import CompressedManifestStaticFilesStorage
-
-
-class WhiteNoiseStaticFilesStorage(CompressedManifestStaticFilesStorage):
-    manifest_strict = False
 
 # This prints out the email in the console/terminal
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
