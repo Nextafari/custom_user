@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import (
-    User, RecentTransaction, UserTransaction, Profile
+    User, RecentTransaction, UserTransaction
 )
 from django.contrib.auth import authenticate
 from django.contrib.auth import get_user_model  # If used custom user model

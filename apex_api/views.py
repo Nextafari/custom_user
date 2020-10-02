@@ -1,15 +1,15 @@
 # from django.contrib.auth import authenticate
 # from django.shortcuts import render
-from django.contrib.auth import get_user_model, login, logout
+from django.contrib.auth import get_user_model, login
 from knox.views import LoginView as knox_login_view
 from rest_framework import permissions, status
-from rest_framework.authentication import TokenAuthentication
+# from rest_framework.authentication import TokenAuthentication
 from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import (
-    RecentTransaction, User, UserTransaction, Profile
+    RecentTransaction, User, UserTransaction
 )
 from .serializers import (
     RecentTransactionSerializer, UserLoginSerializer,
@@ -46,7 +46,7 @@ class CreateUserView(CreateAPIView):
 class UserLogin(knox_login_view):
     permission_classes = [permissions.AllowAny]
     serializer_class = UserLoginSerializer
-    
+
     @swagger_auto_schema(
         request_body=UserLoginSerializer,
         operation_description="Logs user in.",

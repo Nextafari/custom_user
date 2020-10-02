@@ -31,6 +31,7 @@ class Deposit(APIView):
                 amount=serializer.validated_data.get("amount"),
                 payment_method="BTC",
                 amount_in_btc=serializer.validated_data.get("amount_in_btc"),
+                details="Deposit to wallet"
             )
             deposit.save()
             user = request.user
@@ -68,7 +69,8 @@ class Withdraw(APIView):
                 transaction_type="Withdrawal",
                 amount=serializer.validated_data.get("amount"),
                 payment_method="BTC",
-                amount_in_btc=serializer.validated_data.get("amount_in_btc")
+                amount_in_btc=serializer.validated_data.get("amount_in_btc"),
+                details="Withdrawal from wallet"
             )
             withdraw.save()
             user = request.user
