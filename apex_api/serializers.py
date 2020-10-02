@@ -71,7 +71,7 @@ class UserTranactionSerializer(serializers.ModelSerializer):
 
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Profile
+        model = User
         fields = [
-            "user", "image", "trading_code"
+            "full_name", "email"
         ]

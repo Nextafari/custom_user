@@ -131,7 +131,7 @@ class UserProfile(APIView):
 
 class EditUserProfile(RetrieveUpdateDestroyAPIView):
     permission_classes = [IsAuthenticated]
-    serializer_class = UserSerializer
+    serializer_class = ProfileSerializer
     lookup_field = "id"
 
     def get_queryset(self):
