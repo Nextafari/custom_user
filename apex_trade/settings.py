@@ -45,6 +45,9 @@ INSTALLED_APPS = [
     'chart',
     'wallet',
     'rest_framework',
+    # cloudinary
+    'cloudinary_storage',
+    'cloudinary',
     # 'allauth',
     # 'allauth.account',
     'knox',
@@ -215,7 +218,7 @@ STATICFILES_DIRS = [
 
 MEDIA_ROOT = Path.joinpath(BASE_DIR, "media")
 
-STATICFILES_STORAGE = '.storage.WhiteNoiseStaticFilesStorage'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
 # This prints out the email in the console/terminal
@@ -234,6 +237,14 @@ EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+
+# Cloudinary Settings
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.getenv("CLOUD_NAME"),
+    'API_KEY': os.getenv("API_KEY"),
+    'API_SECRET': os.getenv("API_SECRET")
+}
 
 
 # Activate Django-Heroku.
