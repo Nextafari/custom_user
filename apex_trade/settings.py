@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    # Cloudinary
+    'cloudinary_storage',
+    'cloudinary',
     'apex_api',
     'chart',
     'wallet',
@@ -217,6 +220,8 @@ MEDIA_ROOT = Path.joinpath(BASE_DIR, "media")
 
 STATICFILES_STORAGE = '.storage.WhiteNoiseStaticFilesStorage'
 
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 
 # This prints out the email in the console/terminal
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -235,6 +240,12 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.getenv("CLOUD_NAME"),
+    'API_KEY': os.getenv("API_KEY"),
+    'API_SECRET': os.getenv("API_SECRET")
+}
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
