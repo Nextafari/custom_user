@@ -34,13 +34,11 @@ class UserManager(BaseUserManager):
             full_name=full_name,
             password=password
         )
-        user.staff = True
+        user.is_staff = True
         user.is_admin = True
         user.is_superuser = True
         user.save(using=self._db)
         return user
-
-        return self._create_user(email, password, **extra_fields)
 
 
 class User(AbstractBaseUser):
@@ -60,7 +58,7 @@ class User(AbstractBaseUser):
     is_admin = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
-    
+
     objects = UserManager()
 
     # This overwrites django's default user model's username to a
