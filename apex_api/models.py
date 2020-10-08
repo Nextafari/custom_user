@@ -148,7 +148,9 @@ def create_trading_code():
     letters = string.ascii_lowercase
     length = 5
     num = random.randrange(0, 10)
-    code_str_int = ''.join(random.choice(letters+str(num)) for i in range(length))
+    code_str_int = ''.join(
+        random.choice(letters+str(num)) for i in range(length)
+    )
     return code_str_int
 
 
@@ -158,7 +160,9 @@ class Profile(models.Model):
         verbose_name_plural = "Profile"
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default="fdhdfs.jpg", upload_to="profile_pics")
-    trading_code = models.CharField(max_length=10, default=create_trading_code, blank=True)
+    trading_code = models.CharField(
+        max_length=10, default=create_trading_code, blank=True
+    )
 
     def __str__(self):
         return f"{self.user.full_name} Profile"
