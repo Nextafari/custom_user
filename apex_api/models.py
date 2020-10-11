@@ -133,10 +133,10 @@ class UserTransaction(models.Model):
     transaction_type = models.CharField(
         max_length=200, choices=TRANSACTION_TYPE_CHOICES
     )
-    amount = models.DecimalField(max_digits=10, decimal_places=8)
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
     payment_method = models.CharField(max_length=100)
     status = models.CharField(max_length=100, default="Pending")
-    amount_in_btc = models.DecimalField(max_digits=10, decimal_places=7)
+    amount_in_btc = models.DecimalField(max_digits=10, decimal_places=10)
     details = models.CharField(max_length=200, choices=DETAIL_CHOICES)
 
     def __str__(self):
