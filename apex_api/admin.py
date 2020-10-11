@@ -13,7 +13,7 @@ AdminSite.site_title = gettext_lazy('TRDDEX')
 AdminSite.site_header = gettext_lazy('TRDDEX ADMIN')
 
 # Text to put at the top of the admin index page.
-AdminSite.index_title = gettext_lazy('TRDDEX')
+AdminSite.index_title = gettext_lazy('TRDDEX ADMIN')
 
 
 class UserReg(admin.ModelAdmin):
