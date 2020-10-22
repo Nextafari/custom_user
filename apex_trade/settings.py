@@ -222,7 +222,7 @@ STATICFILES_DIRS = [
 
 MEDIA_ROOT = Path.joinpath(BASE_DIR, "media")
 
-STATICFILES_STORAGE = '.storage.WhiteNoiseStaticFilesStorage'
+# STATICFILES_STORAGE = '.storage.WhiteNoiseStaticFilesStorage'
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
