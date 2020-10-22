@@ -222,7 +222,7 @@ STATICFILES_DIRS = [
 
 MEDIA_ROOT = Path.joinpath(BASE_DIR, "media")
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
