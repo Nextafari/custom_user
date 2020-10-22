@@ -29,7 +29,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = True
 
 # This shows the error on the server when debug is set to false
-DEBUG_PROPAGATE_EXCEPTIONS = True
+# DEBUG_PROPAGATE_EXCEPTIONS = True
 
 
 ALLOWED_HOSTS = ['*', 'custom-user-api.herokuapp.com']
