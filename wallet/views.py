@@ -77,7 +77,7 @@ class Withdraw(APIView):
             amount = serializer.validated_data.get("amount")
             amount_in_btc = serializer.validated_data.get("amount_in_btc")
             send_mail(
-                "Deposit Alert",
+                "Withdrawal Alert",
                 f'{user} just created a Withdrawal of ${amount} equivalent to BTC{amount_in_btc} change status from pending to approved',
                 settings.EMAIL_HOST_USER,
                 ['info@trddex.com']
