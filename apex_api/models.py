@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 import random
 import string
+from cloudinary.models import CloudinaryField
 
 
 class UserManager(BaseUserManager):
@@ -159,7 +160,7 @@ class Profile(models.Model):
         verbose_name = "Profile"
         verbose_name_plural = "Profile"
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = models.ImageField(default="fdhdfs.jpg", upload_to="profile_pics")
+    image = CloudinaryField("profile_pics", default="fdhdfs.jpg")
     trading_code = models.CharField(
         max_length=10, default=create_trading_code, blank=True
     )

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 import os
+import cloudinary
 import django_heroku
 from pathlib import Path
 from datetime import timedelta
@@ -45,9 +46,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    # Cloudinary
+    # Django-cloudinary-storage
     'cloudinary_storage',
     'cloudinary',
+    # Django Apps
     'apex_api',
     'chart',
     'wallet',
@@ -222,9 +224,7 @@ STATICFILES_DIRS = [
 
 MEDIA_ROOT = Path.joinpath(BASE_DIR, "media")
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 # This prints out the email in the console/terminal
@@ -244,12 +244,21 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
+# Cloudinary settings
+cloudinary.config(
+    cloud_name=os.getenv("CLOUD_NAME"),
+    api_key=os.getenv("API_KEY"),
+    api_secret=os.getenv("API_SECRET")
+)
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.getenv("CLOUD_NAME"),
-    'API_KEY': os.getenv("API_KEY"),
-    'API_SECRET': os.getenv("API_SECRET")
-}
+
+# CLOUDINARY_STORAGE = {
+#     'CLOUD_NAME': os.getenv("CLOUD_NAME"),
+#     'API_KEY': os.getenv("API_KEY"),
+#     'API_SECRET': os.getenv("API_SECRET")
+# }
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
