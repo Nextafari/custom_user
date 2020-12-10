@@ -53,6 +53,8 @@ INSTALLED_APPS = [
     'apex_api',
     'chart',
     'wallet',
+    'investment_guide',
+    # RestFramework
     'rest_framework',
     # 'allauth',
     # 'allauth.account',
