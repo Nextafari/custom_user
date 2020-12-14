@@ -57,7 +57,7 @@ urlpatterns = [
         '', include('wallet.urls'), name="wallet"
     ),
     path(
-        '',
+        'investment_api',
         include("investment_guide.urls"),
         name="invesment"
     ),
