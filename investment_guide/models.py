@@ -21,7 +21,7 @@ class Trader(models.Model):
     commission_fixed_per_lot = models.IntegerField()
     commission_revshare = models.IntegerField()
     is_trial_period_enabled = models.BooleanField(default=False)
-    avatar = CloudinaryField()
+    avatar = CloudinaryField("trader")
     experience = models.IntegerField()
     account_created = models.DateTimeField(auto_created=True)
     country = models.CharField(max_length=30)
