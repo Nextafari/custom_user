@@ -18,6 +18,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='usertransaction',
             name='amount_in_btc',
-            field=models.DecimalField(decimal_places=10, max_digits=10),
+            field=models.DecimalField(decimal_places=4, max_digits=10),
         ),
     ]
