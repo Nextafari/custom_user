@@ -13,4 +13,9 @@ urlpatterns = [
         views.TradeHistoryView.as_view(),
         name="trade_history"
     ),
+    path(
+        "trader_profile/<int:pk>/",
+        views.TraderProfileHistoryView.as_view(),
+        name="trader_profile"
+    ),
 ]

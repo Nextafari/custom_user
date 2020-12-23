@@ -1,9 +1,14 @@
-from rest_framework.views import APIView
-from .serializers import TraderSerializer, TradeHistorySerializer
-from .models import TradeHistory, Trader
+from rest_framework import status
+from rest_framework.generics import ListAPIView
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework.views import APIView
+
+from .models import TradeHistory, Trader
+from .serializers import (
+    TradeHistorySerializer, TraderProfileSerializer,
+    TraderSerializer
+)
 
 
 class TraderView(APIView):
@@ -31,4 +36,24 @@ class TradeHistoryView(APIView):
         return Response(
             serializer.data,
             status=status.HTTP_200_OK
+        )
+
+
+class TraderProfileHistoryView(ListAPIView):
+    """Lists out all the traders alongside their
+    individual transaction histories in the same endpoint
+    """
+    permission_classes = [AllowAny]
+    serializer_class = TraderProfileSerializer
+    queryset = Trader.objects.all()
+
+    def get(self, request, pk):
+        queryset = Trader.objects.filter(pk=pk)
+        serializer = TraderProfileSerializer(
+            queryset,
+            context={"request": request},
+            many=True
+        )
+        return Response(
+            serializer.data
         )

@@ -1,6 +1,7 @@
 from cloudinary.models import CloudinaryField
 from django.db import models
 from numpy import random
+from .time_func import added_time, time_difference
 
 
 def account_number_generator():
@@ -36,6 +37,10 @@ class Trader(models.Model):
     equity = models.DecimalField(max_digits=19, decimal_places=2)
     strategy_description = models.TextField()
 
+    def __str__(self):
+        return f"{self.name}"
+
+
 
 class TradeHistory(models.Model):
     class Meta:
@@ -53,13 +58,25 @@ class TradeHistory(models.Model):
     icon = models.CharField(
         max_length=15, choices=ICON_CHOICES
     )
-    text = models.TextField()
+    text = models.TextField(blank=True)
     date = models.DateField(auto_now_add=True)
-    open_time = models.TimeField(auto_now_add=True)
-    close_time = models.TimeField(auto_now_add=True)
-    duration = models.DurationField(blank=True)
+    open_time = models.TimeField(auto_now_add=True, null=True, blank=True)
+    close_time = models.TimeField(
+        default=added_time(20),
+        null=True,
+        blank=True
+    )
+    duration = models.CharField(
+        max_length=100,
+        # default=time_difference(f"{open_time}", f"{close_time}"),
+        blank=True,
+        null=True
+    )
     volume = models.DecimalField(max_digits=19, decimal_places=2)
     symbol = models.CharField(max_length=8)
     profit = models.DecimalField(max_digits=19, decimal_places=2)
     is_trade = models.BooleanField(default=True)
     currency = models.CharField(max_length=10, default="BTC")
+
+    def __str__(self):
+        return f"{self.trader.name}"

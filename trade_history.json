@@ -1,0 +1,436 @@
+[
+{
+    "model": "investment_guide.trader",
+    "pk": 1,
+    "fields": {
+        "account_created": "2020-12-14T23:11:41Z",
+        "account_number": 8744531,
+        "name": "Kenneth Rogers",
+        "commission_type": "revshare",
+        "commission_fixed_per_lot": 0,
+        "commission_revshare": 30,
+        "is_trial_period_enabled": false,
+        "avatar": "image/upload/v1607987597/itresqhmaxp1jeeco2dn.jpg",
+        "experience": 3,
+        "country": "United States of America",
+        "country_code": "USA",
+        "gain": "5000.00",
+        "profit": "3500.00",
+        "loss": "1200.00",
+        "copiers_count": 550,
+        "copiers_delta": 550,
+        "time_with_us_days": 1096,
+        "is_subscribed": false,
+        "equity": "1000.00",
+        "strategy_description": "Manual trading by using technical analysis and price action. Refer multi-timeframes to analysis before entry. Concentrate on GBPUSD,EURUSD. IMP NOTE: ALL COPIERS MUST JOIN THIS LINK TO KEEP IN TOUCH WITH US Please don't join proportionally it doesn't open coz we do trades on small lot. Many Thanks\r\nJoin chat:   https://..."
+    }
+},
+{
+    "model": "investment_guide.trader",
+    "pk": 2,
+    "fields": {
+        "account_created": "2019-12-09T23:30:38Z",
+        "account_number": 2716963,
+        "name": "Roman David",
+        "commission_type": "revshare",
+        "commission_fixed_per_lot": 0,
+        "commission_revshare": 30,
+        "is_trial_period_enabled": false,
+        "avatar": "image/upload/v1607988799/lkmff3ke8a3gob87dm2b.jpg",
+        "experience": 3,
+        "country": "United States of America",
+        "country_code": "USA",
+        "gain": "34500.00",
+        "profit": "34500.00",
+        "loss": "4000.00",
+        "copiers_count": 950,
+        "copiers_delta": 500,
+        "time_with_us_days": 367,
+        "is_subscribed": false,
+        "equity": "15000.00",
+        "strategy_description": "Manual trading by using technical analysis and price action. Refer multi-timeframes to analysis before entry. Concentrate on GBPUSD,EURUSD. IMP NOTE: ALL COPIERS MUST JOIN THIS LINK TO KEEP IN TOUCH WITH US Please don't join proportionally it doesn't open coz we do trades on small lot. Many Thanks\r\nJoin chat:   https://......."
+    }
+},
+{
+    "model": "investment_guide.trader",
+    "pk": 3,
+    "fields": {
+        "account_created": "2018-12-15T23:36:49Z",
+        "account_number": 6150783,
+        "name": "Sun Jin Moon",
+        "commission_type": "revshare",
+        "commission_fixed_per_lot": 0,
+        "commission_revshare": 30,
+        "is_trial_period_enabled": false,
+        "avatar": "image/upload/v1607989134/pt7dwetmhwrntm74wsq6.jpg",
+        "experience": 3,
+        "country": "United States of America",
+        "country_code": "USA",
+        "gain": "12000.00",
+        "profit": "12000.00",
+        "loss": "2300.00",
+        "copiers_count": 1050,
+        "copiers_delta": 250,
+        "time_with_us_days": 735,
+        "is_subscribed": false,
+        "equity": "1000.00",
+        "strategy_description": "Manual trading by using technical analysis and price action. Refer multi-timeframes to analysis before entry. Concentrate on GBPUSD,EURUSD. IMP NOTE: ALL COPIERS MUST JOIN THIS LINK TO KEEP IN TOUCH WITH US Please don't join proportionally it doesn't open coz we do trades on small lot. Many Thanks\\r\\nJoin chat:   https://..."
+    }
+},
+{
+    "model": "investment_guide.trader",
+    "pk": 4,
+    "fields": {
+        "account_created": "2018-12-15T23:36:49Z",
+        "account_number": 6150783,
+        "name": "Damanati Dembe",
+        "commission_type": "revshare",
+        "commission_fixed_per_lot": 0,
+        "commission_revshare": 30,
+        "is_trial_period_enabled": false,
+        "avatar": "image/upload/v1607989134/pt7dwetmhwrntm74wsq6.jpg",
+        "experience": 3,
+        "country": "United States of America",
+        "country_code": "USA",
+        "gain": "12000.00",
+        "profit": "12000.00",
+        "loss": "2300.00",
+        "copiers_count": 1050,
+        "copiers_delta": 250,
+        "time_with_us_days": 735,
+        "is_subscribed": false,
+        "equity": "1000.00",
+        "strategy_description": "Manual trading by using technical analysis and price action. Refer multi-timeframes to analysis before entry. Concentrate on GBPUSD,EURUSD. IMP NOTE: ALL COPIERS MUST JOIN THIS LINK TO KEEP IN TOUCH WITH US Please don't join proportionally it doesn't open coz we do trades on small lot. Many Thanks\\r\\nJoin chat:   https://..."
+    }
+},
+{
+    "model": "investment_guide.trader",
+    "pk": 5,
+    "fields": {
+        "account_created": "2018-12-15T23:36:49Z",
+        "account_number": 6150783,
+        "name": "Sun Jin Park",
+        "commission_type": "revshare",
+        "commission_fixed_per_lot": 0,
+        "commission_revshare": 30,
+        "is_trial_period_enabled": false,
+        "avatar": "image/upload/v1607989134/pt7dwetmhwrntm74wsq6.jpg",
+        "experience": 3,
+        "country": "United States of America",
+        "country_code": "USA",
+        "gain": "12000.00",
+        "profit": "12000.00",
+        "loss": "2300.00",
+        "copiers_count": 1050,
+        "copiers_delta": 250,
+        "time_with_us_days": 735,
+        "is_subscribed": false,
+        "equity": "1000.00",
+        "strategy_description": "Manual trading by using technical analysis and price action. Refer multi-timeframes to analysis before entry. Concentrate on GBPUSD,EURUSD. IMP NOTE: ALL COPIERS MUST JOIN THIS LINK TO KEEP IN TOUCH WITH US Please don't join proportionally it doesn't open coz we do trades on small lot. Many Thanks\\r\\nJoin chat:   https://..."
+    }
+},
+{
+    "model": "investment_guide.trader",
+    "pk": 6,
+    "fields": {
+        "account_created": "2018-12-15T23:36:49Z",
+        "account_number": 6150783,
+        "name": "David Gyle",
+        "commission_type": "revshare",
+        "commission_fixed_per_lot": 0,
+        "commission_revshare": 30,
+        "is_trial_period_enabled": false,
+        "avatar": "image/upload/v1607989134/pt7dwetmhwrntm74wsq6.jpg",
+        "experience": 3,
+        "country": "United States of America",
+        "country_code": "USA",
+        "gain": "12000.00",
+        "profit": "12000.00",
+        "loss": "2300.00",
+        "copiers_count": 1050,
+        "copiers_delta": 250,
+        "time_with_us_days": 735,
+        "is_subscribed": false,
+        "equity": "1000.00",
+        "strategy_description": "Manual trading by using technical analysis and price action. Refer multi-timeframes to analysis before entry. Concentrate on GBPUSD,EURUSD. IMP NOTE: ALL COPIERS MUST JOIN THIS LINK TO KEEP IN TOUCH WITH US Please don't join proportionally it doesn't open coz we do trades on small lot. Many Thanks\\r\\nJoin chat:   https://..."
+    }
+},
+{
+    "model": "investment_guide.trader",
+    "pk": 7,
+    "fields": {
+        "account_created": "2018-12-15T23:36:49Z",
+        "account_number": 6150783,
+        "name": "Mandi Patinkin",
+        "commission_type": "revshare",
+        "commission_fixed_per_lot": 0,
+        "commission_revshare": 30,
+        "is_trial_period_enabled": false,
+        "avatar": "image/upload/v1607989134/pt7dwetmhwrntm74wsq6.jpg",
+        "experience": 3,
+        "country": "United States of America",
+        "country_code": "USA",
+        "gain": "12000.00",
+        "profit": "12000.00",
+        "loss": "2300.00",
+        "copiers_count": 1050,
+        "copiers_delta": 250,
+        "time_with_us_days": 735,
+        "is_subscribed": false,
+        "equity": "1000.00",
+        "strategy_description": "Manual trading by using technical analysis and price action. Refer multi-timeframes to analysis before entry. Concentrate on GBPUSD,EURUSD. IMP NOTE: ALL COPIERS MUST JOIN THIS LINK TO KEEP IN TOUCH WITH US Please don't join proportionally it doesn't open coz we do trades on small lot. Many Thanks\\r\\nJoin chat:   https://..."
+    }
+},
+{
+    "model": "investment_guide.tradehistory",
+    "pk": 1,
+    "fields": {
+        "trader": 3,
+        "icon": "sell",
+        "text": "",
+        "date": "2020-12-23",
+        "open_time": "21:10:28.460",
+        "close_time": "21:10:28.460",
+        "duration": null,
+        "volume": "0.01",
+        "symbol": "BTCETH",
+        "profit": "-0.12",
+        "is_trade": true,
+        "currency": "BTC"
+    }
+},
+{
+    "model": "investment_guide.tradehistory",
+    "pk": 2,
+    "fields": {
+        "trader": 2,
+        "icon": "sell",
+        "text": "",
+        "date": "2020-12-23",
+        "open_time": "21:11:10.260",
+        "close_time": "21:11:10.260",
+        "duration": null,
+        "volume": "0.01",
+        "symbol": "BTC",
+        "profit": "10.05",
+        "is_trade": true,
+        "currency": "BTC"
+    }
+},
+{
+    "model": "investment_guide.tradehistory",
+    "pk": 3,
+    "fields": {
+        "trader": 3,
+        "icon": "sell",
+        "text": "",
+        "date": "2020-12-23",
+        "open_time": "21:11:29.969",
+        "close_time": "21:11:29.969",
+        "duration": null,
+        "volume": "0.01",
+        "symbol": "BTC",
+        "profit": "13.00",
+        "is_trade": true,
+        "currency": "BTC"
+    }
+},
+{
+    "model": "investment_guide.tradehistory",
+    "pk": 4,
+    "fields": {
+        "trader": 5,
+        "icon": "sell",
+        "text": "",
+        "date": "2020-12-23",
+        "open_time": "21:11:58.432",
+        "close_time": "21:11:58.432",
+        "duration": null,
+        "volume": "0.01",
+        "symbol": "BTC",
+        "profit": "1300.00",
+        "is_trade": true,
+        "currency": "BTC"
+    }
+},
+{
+    "model": "investment_guide.tradehistory",
+    "pk": 5,
+    "fields": {
+        "trader": 3,
+        "icon": "sell",
+        "text": "",
+        "date": "2020-12-23",
+        "open_time": "21:32:04.266",
+        "close_time": "21:32:04.266",
+        "duration": null,
+        "volume": "0.01",
+        "symbol": "BTC",
+        "profit": "10.00",
+        "is_trade": true,
+        "currency": "BTC"
+    }
+},
+{
+    "model": "investment_guide.tradehistory",
+    "pk": 6,
+    "fields": {
+        "trader": 1,
+        "icon": "sell",
+        "text": "",
+        "date": "2020-12-23",
+        "open_time": "21:32:21.394",
+        "close_time": "21:32:21.394",
+        "duration": null,
+        "volume": "0.10",
+        "symbol": "BTC",
+        "profit": "8.00",
+        "is_trade": true,
+        "currency": "BTC"
+    }
+},
+{
+    "model": "investment_guide.tradehistory",
+    "pk": 7,
+    "fields": {
+        "trader": 1,
+        "icon": "sell",
+        "text": "",
+        "date": "2020-12-23",
+        "open_time": "21:32:52.461",
+        "close_time": "21:32:52.461",
+        "duration": null,
+        "volume": "0.20",
+        "symbol": "BTC",
+        "profit": "0.12",
+        "is_trade": true,
+        "currency": "BTC"
+    }
+},
+{
+    "model": "investment_guide.tradehistory",
+    "pk": 8,
+    "fields": {
+        "trader": 7,
+        "icon": "sell",
+        "text": "",
+        "date": "2020-12-23",
+        "open_time": "22:40:35.074",
+        "close_time": "22:40:35.074",
+        "duration": null,
+        "volume": "0.01",
+        "symbol": "BTC",
+        "profit": "0.05",
+        "is_trade": true,
+        "currency": "BTC"
+    }
+},
+{
+    "model": "investment_guide.tradehistory",
+    "pk": 9,
+    "fields": {
+        "trader": 6,
+        "icon": "sell",
+        "text": "",
+        "date": "2020-12-23",
+        "open_time": "22:41:11.141",
+        "close_time": "22:41:11.141",
+        "duration": null,
+        "volume": "0.01",
+        "symbol": "BTC/ETH",
+        "profit": "10.00",
+        "is_trade": true,
+        "currency": "BTC"
+    }
+},
+{
+    "model": "investment_guide.tradehistory",
+    "pk": 10,
+    "fields": {
+        "trader": 1,
+        "icon": "sell",
+        "text": "",
+        "date": "2020-12-23",
+        "open_time": "22:41:31.608",
+        "close_time": "22:41:31.608",
+        "duration": null,
+        "volume": "0.01",
+        "symbol": "BTC/ETH",
+        "profit": "11.00",
+        "is_trade": true,
+        "currency": "BTC"
+    }
+},
+{
+    "model": "investment_guide.tradehistory",
+    "pk": 11,
+    "fields": {
+        "trader": 3,
+        "icon": "buy",
+        "text": "",
+        "date": "2020-12-23",
+        "open_time": "22:42:34.919",
+        "close_time": "22:42:34.919",
+        "duration": null,
+        "volume": "0.01",
+        "symbol": "BTC",
+        "profit": "17.00",
+        "is_trade": true,
+        "currency": "BTC"
+    }
+},
+{
+    "model": "investment_guide.tradehistory",
+    "pk": 12,
+    "fields": {
+        "trader": 2,
+        "icon": "buy",
+        "text": "",
+        "date": "2020-12-23",
+        "open_time": "22:42:58.199",
+        "close_time": "22:42:58.199",
+        "duration": null,
+        "volume": "9.00",
+        "symbol": "BTC",
+        "profit": "8.00",
+        "is_trade": true,
+        "currency": "BTC"
+    }
+},
+{
+    "model": "investment_guide.tradehistory",
+    "pk": 13,
+    "fields": {
+        "trader": 3,
+        "icon": "buy",
+        "text": "",
+        "date": "2020-12-23",
+        "open_time": "22:45:49.017",
+        "close_time": "22:45:49.017",
+        "duration": null,
+        "volume": "0.01",
+        "symbol": "BTC",
+        "profit": "7.00",
+        "is_trade": true,
+        "currency": "BTC"
+    }
+},
+{
+    "model": "investment_guide.tradehistory",
+    "pk": 14,
+    "fields": {
+        "trader": 1,
+        "icon": "buy",
+        "text": "",
+        "date": "2020-12-23",
+        "open_time": "22:46:16.663",
+        "close_time": "22:46:16.663",
+        "duration": null,
+        "volume": "0.01",
+        "symbol": "BTC",
+        "profit": "220.00",
+        "is_trade": true,
+        "currency": "BTC"
+    }
+}
+]

@@ -260,6 +260,10 @@ cloudinary.config(
 #     'API_SECRET': os.getenv("API_SECRET")
 # }
 
+FIXTURES_DIRS = [
+
+]
+
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Activate Django-Heroku.
