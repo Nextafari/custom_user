@@ -432,5 +432,59 @@
         "is_trade": true,
         "currency": "BTC"
     }
+},
+{
+    "model": "investment_guide.tradehistory",
+    "pk": 15,
+    "fields": {
+        "trader": 2,
+        "icon": "buy",
+        "text": "",
+        "date": "2020-12-23",
+        "open_time": "22:46:16.663",
+        "close_time": "22:46:16.663",
+        "duration": null,
+        "volume": "0.01",
+        "symbol": "BTC",
+        "profit": "220.00",
+        "is_trade": true,
+        "currency": "BTC"
+    }
+},
+{
+    "model": "investment_guide.tradehistory",
+    "pk": 16,
+    "fields": {
+        "trader": 2,
+        "icon": "buy",
+        "text": "",
+        "date": "2020-12-23",
+        "open_time": "22:46:16.663",
+        "close_time": "22:46:16.663",
+        "duration": null,
+        "volume": "0.01",
+        "symbol": "BTC",
+        "profit": "220.00",
+        "is_trade": true,
+        "currency": "BTC"
+    }
+},
+{
+    "model": "investment_guide.tradehistory",
+    "pk": 17,
+    "fields": {
+        "trader": 4,
+        "icon": "buy",
+        "text": "",
+        "date": "2020-12-23",
+        "open_time": "22:46:16.663",
+        "close_time": "22:46:16.663",
+        "duration": null,
+        "volume": "0.01",
+        "symbol": "BTC",
+        "profit": "220.00",
+        "is_trade": true,
+        "currency": "BTC"
+    }
 }
 ]

@@ -1,7 +1,6 @@
 from django.urls import path
 from . import views
 
-
 urlpatterns = [
     path(
         "traders/",
@@ -17,5 +16,10 @@ urlpatterns = [
         "trader_profile/<int:pk>/",
         views.TraderProfileHistoryView.as_view(),
         name="trader_profile"
+    ),
+    path(
+        "register/",
+        views.UserRegistrationView.as_view(),
+        name="user_registration"
     ),
 ]

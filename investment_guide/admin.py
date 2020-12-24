@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Trader, TradeHistory
+from .models import Trader, TradeHistory, User
 
 
 class TraderDBView(admin.ModelAdmin):
@@ -24,3 +24,13 @@ class TraderHistroyDb(admin.ModelAdmin):
 
 
 admin.site.register(TradeHistory, TraderHistroyDb)
+
+
+class UsersReg(admin.ModelAdmin):
+    list_display = [
+       "email", "name", "date_joined", "last_login",
+       "is_active", "is_admin", "is_staff", "is_superuser"
+    ]
+
+
+admin.site.register(User, UsersReg)
