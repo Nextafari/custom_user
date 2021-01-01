@@ -49,6 +49,9 @@ class User(AbstractBaseUser):
     username = None
     email = models.EmailField(unique=True)
     full_name = models.CharField(max_length=50)
+    investor = models.BooleanField(
+        default=False, blank=True
+    )
     date_joined = models.DateTimeField(
         verbose_name='date joined', auto_now_add=True
     )

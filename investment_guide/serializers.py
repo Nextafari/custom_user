@@ -1,25 +1,5 @@
 from rest_framework import serializers
-from .models import Trader, TradeHistory, User
-# from django.contrib.auth import authenticate
-
-
-class UsersSerializer(serializers.ModelSerializer):
-
-    password = serializers.CharField(write_only=True)
-
-    class Meta:
-        model = User
-        fields = [
-            'email', 'name', 'password'
-        ]
-
-        def validate(self, attrs):
-            email = attrs["email"]
-            if User.objects.filter(email=email).exists():
-                raise serializers.ValidationError({
-                    'email': 'This email already exits'
-                    })
-            return super().validate(attrs)
+from .models import Trader, TradeHistory
 
 
 class TraderSerializer(serializers.ModelSerializer):
