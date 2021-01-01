@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Trader, TradeHistory
+from apex_api.models import User
 
 
 class TraderSerializer(serializers.ModelSerializer):
@@ -27,3 +28,22 @@ class TraderProfileSerializer(serializers.ModelSerializer):
             "time_with_us_days", "is_subscribed", "equity",
             "strategy_description", "tradehistory_set"
         ]
+
+
+class RegisterUserSerializer(serializers.ModelSerializer):
+
+    password = serializers.CharField(write_only=True)
+
+    class Meta:
+        model = User
+        fields = [
+            'email', 'full_name', 'investor', 'password'
+        ]
+
+        def validate(self, attrs):
+            email = attrs["email"]
+            if User.objects.filter(email=email).exists():
+                raise serializers.ValidationError({
+                    'email': 'This email already exits'
+                    })
+            return super().validate(attrs)

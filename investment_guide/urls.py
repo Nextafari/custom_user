@@ -18,6 +18,11 @@ urlpatterns = [
         name="trader_profile"
     ),
     path(
+        "register/",
+        views.RegisterUserView.as_view(),
+        name="user_registration"
+    ),
+    path(
         "traders_and_history/",
         views.TraderAndHistoryView.as_view(),
         name="traders_and_history"

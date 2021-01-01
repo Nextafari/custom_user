@@ -3,12 +3,38 @@ from rest_framework.generics import ListAPIView
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
-
+from django.contrib.auth import get_user_model
+from rest_framework.generics import CreateAPIView
 from .models import TradeHistory, Trader
+from apex_api.models import User
 from .serializers import (
     TradeHistorySerializer, TraderProfileSerializer,
-    TraderSerializer
+    TraderSerializer, RegisterUserSerializer
 )
+
+
+class RegisterUserView(CreateAPIView):
+    custom_model = get_user_model()
+    permission_classes = [AllowAny]
+    serializer_class = RegisterUserSerializer
+
+    def post(self, request):
+        serializer = RegisterUserSerializer(data=request.data)
+        if request.method == "POST":
+            serializer.is_valid(raise_exception=True)
+            user = User.objects.create(
+                email=serializer.validated_data.get('email'),
+                full_name=serializer.validated_data.get('full_name'),
+                investor=serializer.validated_data.get('investor')
+            )
+            user.set_password(serializer.validated_data.get('password'))
+            user.save()
+            return Response(
+                {
+                    "data": "User created"
+                },
+                status=status.HTTP_201_CREATED
+            )
 
 
 class TraderView(APIView):
