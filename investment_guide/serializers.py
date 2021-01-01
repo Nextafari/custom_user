@@ -42,8 +42,8 @@ class TraderProfileSerializer(serializers.ModelSerializer):
         fields = [
             "name", "socials", "commission_type", "commission_fixed_per_lot",
             "commission_revshare", "avatar", "experience", "account_created",
-            "country", "country_code", "gain", "profit", "loss", "minimum_value",
-            "copiers_count", "copiers_delta", "time_with_us_days",
-            "is_subscribed", "equity", "strategy_description",
-            "tradehistory_set"
+            "country", "country_code", "gain", "profit", "loss",
+            "minimum_value", "copiers_count", "copiers_delta",
+            "time_with_us_days", "is_subscribed", "equity",
+            "strategy_description", "tradehistory_set"
         ]
