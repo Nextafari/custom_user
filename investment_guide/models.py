@@ -96,6 +96,7 @@ class Trader(models.Model):
         default=account_number_generator
     )
     name = models.CharField(max_length=200, unique=True)
+    socials = models.TextField(blank=True)
     commission_type = models.CharField(max_length=200, default="revshare")
     commission_fixed_per_lot = models.IntegerField()
     commission_revshare = models.IntegerField()
@@ -117,7 +118,6 @@ class Trader(models.Model):
 
     def __str__(self):
         return f"{self.name}"
-
 
 
 class TradeHistory(models.Model):
