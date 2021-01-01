@@ -66,7 +66,7 @@ class TradeHistoryView(APIView):
 
 
 class TraderProfileHistoryView(ListAPIView):
-    """Lists out all the traders alongside their
+    """Lists out a traders alongside their
     individual transaction histories in the same endpoint
     """
     permission_classes = [AllowAny]
@@ -75,6 +75,26 @@ class TraderProfileHistoryView(ListAPIView):
 
     def get(self, request, pk):
         queryset = Trader.objects.filter(pk=pk)
+        serializer = TraderProfileSerializer(
+            queryset,
+            context={"request": request},
+            many=True
+        )
+        return Response(
+            serializer.data
+        )
+
+
+class TraderAndHistoryView(ListAPIView):
+    """Lists out all the traders alongside their
+    individual transaction histories in the same endpoint
+    """
+    permission_classes = [AllowAny]
+    serializer_class = TraderProfileSerializer
+    queryset = Trader.objects.all()
+
+    def get(self, request):
+        queryset = Trader.objects.all()
         serializer = TraderProfileSerializer(
             queryset,
             context={"request": request},

@@ -22,4 +22,9 @@ urlpatterns = [
         views.UserRegistrationView.as_view(),
         name="user_registration"
     ),
+    path(
+        "traders_and_history/",
+        views.TraderAndHistoryView.as_view(),
+        name="traders_and_history"
+    )
 ]
