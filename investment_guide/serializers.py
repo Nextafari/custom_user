@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import Trader, TradeHistory, User
-from django.contrib.auth import authenticate
+# from django.contrib.auth import authenticate
 
 
 class UsersSerializer(serializers.ModelSerializer):
@@ -40,9 +40,10 @@ class TraderProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Trader
         fields = [
-            "name", "commission_type", "commission_fixed_per_lot",
+            "name", "socials", "commission_type", "commission_fixed_per_lot",
             "commission_revshare", "avatar", "experience", "account_created",
-            "country", "country_code", "gain", "profit", "loss",
+            "country", "country_code", "gain", "profit", "loss", "minimum_value",
             "copiers_count", "copiers_delta", "time_with_us_days",
-            "is_subscribed", "equity", "strategy_description", "tradehistory_set"
+            "is_subscribed", "equity", "strategy_description",
+            "tradehistory_set"
         ]
