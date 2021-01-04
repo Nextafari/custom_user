@@ -27,7 +27,7 @@ class TraderProfileSerializer(serializers.ModelSerializer):
             "minimum_value", "floating_profit", "balance",
             "master_traders_bonus", "leverage", "copiers_count",
             "copiers_delta", "time_with_us_days", "is_subscribed", "equity",
-            "strategy_description", "tradehistory_set"
+            "about", "strategy_description", "tradehistory_set"
         ]
 
 
