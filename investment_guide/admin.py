@@ -7,7 +7,8 @@ class TraderDBView(admin.ModelAdmin):
         "name", "commission_type", "commission_fixed_per_lot",
         "commission_revshare", "is_trial_period_enabled", "avatar",
         "experience", "account_created", "country", "country_code",
-        "gain", "profit", "loss", "copiers_count", "copiers_delta",
+        "gain", "profit", "loss", "minimum_value", "floating_profit", "balance",
+        "master_traders_bonus", "leverage", "copiers_count", "copiers_delta",
         "time_with_us_days", "is_subscribed", "equity", "strategy_description"
     ]
 
