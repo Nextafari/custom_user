@@ -13,7 +13,7 @@ admin.site.register(UserAmount, UserAmountAdmin)
 
 class UserProfit(admin.ModelAdmin):
     list_display = [
-        "percentage_profit_rate", "profit"
+        "percentage_profit_rate", "profit", "user"
     ]
 
 
