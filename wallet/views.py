@@ -130,8 +130,6 @@ class WithdrawalFee(APIView):
         user = self.request.user
         user_profit = Profit.objects.filter(user=user).values_list(
             "profit").last()
-        print(user_profit)
         clean_fee = str(user_profit).strip(" (' ',) ")
-        print(clean_fee)
         processing_fee = Decimal(clean_fee) * Decimal(0.1)
         return Response(f"${processing_fee}")
