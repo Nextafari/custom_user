@@ -2,14 +2,13 @@ from rest_framework.views import APIView
 from apex_api.models import UserTransaction
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import UserWalletSerializer, UserAmountSerializer
+from .serializers import UserWalletSerializer
 from drf_yasg.utils import swagger_auto_schema
 from django.core.mail import send_mail
 from django.conf import settings
 from rest_framework.permissions import IsAuthenticated
 from .models import UserAmount, Profit
-from apex_api.models import UserTransaction
-from django.http import JsonResponse
+from decimal import Decimal
 
 
 class Deposit(APIView):
@@ -122,3 +121,17 @@ class UserProfitView(APIView):
                 "user_profit_rate": user_profit_rate
             }
         })
+
+
+class WithdrawalFee(APIView):
+    """Shows the processing fee for withdrawals"""
+
+    def get(self, request):
+        user = self.request.user
+        user_profit = Profit.objects.filter(user=user).values_list(
+            "profit").last()
+        print(user_profit)
+        clean_fee = str(user_profit).strip(" (' ',) ")
+        print(clean_fee)
+        processing_fee = Decimal(clean_fee) * Decimal(0.1)
+        return Response(f"${processing_fee}")
