@@ -52,6 +52,7 @@ class Trader(models.Model):
     time_with_us_days = models.IntegerField()
     is_subscribed = models.BooleanField(default=False)
     equity = models.DecimalField(max_digits=19, decimal_places=2)
+    about = models.TextField(default="Hello, I am a trader")
     strategy_description = models.TextField()
 
     def __str__(self):
