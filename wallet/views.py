@@ -125,6 +125,7 @@ class UserProfitView(APIView):
 
 class WithdrawalFee(APIView):
     """Shows the processing fee for withdrawals"""
+    permission_classes = [IsAuthenticated]
 
     def get(self, request):
         user = self.request.user
