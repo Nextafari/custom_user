@@ -52,6 +52,7 @@ class User(AbstractBaseUser):
     investor = models.BooleanField(
         default=False, blank=True
     )
+    account_linked = models.BooleanField(default=False)
     date_joined = models.DateTimeField(
         verbose_name='date joined', auto_now_add=True
     )

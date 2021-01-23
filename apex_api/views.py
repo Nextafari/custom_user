@@ -8,6 +8,7 @@ from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework import generics
 from .models import (
     RecentTransaction, User, UserTransaction
 )
@@ -146,3 +147,20 @@ class UserId(APIView):
     def get(self, request):
         user_id = self.request.user.id
         return Response(user_id)
+
+
+class UserAccountLinkage(generics.ListAPIView):
+    """
+    A boolean field that is used to link a user's account to an
+    external account
+    """
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        user = self.request.user
+
+        if user.is_authenticated:
+            get_account_linkage = User.objects.filter(
+                pk=user.id).values_list("account_linked")
+
+            return Response(get_account_linkage)

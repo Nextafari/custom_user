@@ -19,8 +19,8 @@ AdminSite.index_title = gettext_lazy('TRDDEX ADMIN')
 class UserReg(admin.ModelAdmin):
     list_display = [
         "email", "full_name", "date_joined", "last_login",
-        "investor", "is_active", "is_admin", "is_staff",
-        "is_superuser"
+        "investor", "account_linked", "is_active", "is_admin",
+        "is_staff", "is_superuser"
     ]
 
 
