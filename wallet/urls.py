@@ -12,4 +12,9 @@ urlpatterns = [
         views.WithdrawalFee.as_view(),
         name="withdrawal_fee"
     ),
+    path(
+        "compound_profit/",
+        views.CompoundedProfit.as_view(),
+        name="compound_profit"
+    ),
 ]

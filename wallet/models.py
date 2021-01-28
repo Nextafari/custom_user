@@ -16,4 +16,5 @@ class Profit(models.Model):
     profit = models.CharField(max_length=100)
 
     def __str__(self):
-        return f"{self.user} your profit is {self.profit} at the rate of {self.percentage_profit_rate}"
+        return f"{self.user} your profit is {self.profit} at the \
+            rate of {self.percentage_profit_rate}"
