@@ -146,7 +146,7 @@ class CompoundedProfit(APIView):
         new_profit = 0
 
         for profit in user_profit:
-            # Getting the integers in the queryset, 
+            # Getting the integers in the queryset,
             # thus indexing the variable
             new_profit += Decimal(profit[0])
         return Response(new_profit)
