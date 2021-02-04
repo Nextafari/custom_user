@@ -134,3 +134,19 @@ class WithdrawalFee(APIView):
         clean_fee = str(user_profit).strip(" (' ',) ")
         processing_fee = Decimal(clean_fee) * Decimal(0.1)
         return Response(f"${processing_fee}")
+
+
+class CompoundedProfit(APIView):
+    """Compounded profit view"""
+
+    def get(self, request):
+        user = self.request.user
+        user_profit = Profit.objects.filter(user=user).values_list("profit")
+
+        new_profit = 0
+
+        for profit in user_profit:
+            # Getting the integers in the queryset,
+            # thus indexing the variable
+            new_profit += Decimal(profit[0])
+        return Response(new_profit)
