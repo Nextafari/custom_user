@@ -40,7 +40,7 @@ class Deposit(APIView):
                 "Deposit Alert",
                 f'{user} just created a deposit of ${amount} equivalent to BTC{amount_in_btc} change status from pending to approved',
                 settings.EMAIL_HOST_USER,
-                ['info@trddex.com']
+                ['info@sigxgroup.org']
             )
             return Response(
                 {
@@ -79,7 +79,7 @@ class Withdraw(APIView):
                 "Withdrawal Alert",
                 f'{user} just created a Withdrawal of ${amount} equivalent to BTC{amount_in_btc} change status from pending to approved',
                 settings.EMAIL_HOST_USER,
-                ['info@trddex.com']
+                ['info@sigxgroup.org']
             )
             return Response(
                 {
