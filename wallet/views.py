@@ -138,7 +138,8 @@ class WithdrawalFee(APIView):
 
 class CompoundedProfit(APIView):
     """Compounded profit view"""
-
+    permission_classes = [IsAuthenticated]
+    
     def get(self, request):
         user = self.request.user
         user_profit = Profit.objects.filter(user=user).values_list("profit")

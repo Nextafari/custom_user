@@ -162,7 +162,7 @@ class UserAccountLinkage(APIView):
 
         if user.is_authenticated:
             get_account_linkage = User.objects.filter(
-                pk=user.id).values_list("account_linked"
-            )
-
+                pk=user.id).values_list(
+                    "account_linked"
+                )
             return Response(get_account_linkage)
