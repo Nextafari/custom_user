@@ -155,7 +155,6 @@ class UserAccountLinkage(APIView):
     external account
     """
     permission_classes = [IsAuthenticated]
-    # serializer_class = UserSerializer
 
     def get(self, request):
         user = self.request.user
