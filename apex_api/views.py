@@ -16,7 +16,7 @@ from .serializers import (
     RecentTransactionSerializer, UserLoginSerializer,
     UserSerializer, UserTranactionSerializer, ProfileSerializer
 )
-from drf_yasg.utils import swagger_auto_schema
+from drf_yasg.utils import get_serializer_class, swagger_auto_schema
 
 
 class CreateUserView(CreateAPIView):
@@ -149,7 +149,7 @@ class UserId(APIView):
         return Response(user_id)
 
 
-class UserAccountLinkage(generics.ListAPIView):
+class UserAccountLinkage(APIView):
     """
     A boolean field that is used to link a user's account to an
     external account
@@ -161,6 +161,7 @@ class UserAccountLinkage(generics.ListAPIView):
 
         if user.is_authenticated:
             get_account_linkage = User.objects.filter(
-                pk=user.id).values_list("account_linked")
-
+                pk=user.id).values_list(
+                    "account_linked"
+                )
             return Response(get_account_linkage)
