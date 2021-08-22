@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'apex_api',
     'chart',
     'wallet',
+    'email_api',
     'investment_guide',
     # RestFramework
     'rest_framework',
@@ -232,12 +233,6 @@ MEDIA_ROOT = Path.joinpath(BASE_DIR, "media")
 # This prints out the email in the console/terminal
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-# Gmail SMTP SETTINGS
-# EMAIL_HOST = 'smtp.mailgun.org'
-# EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')  # this is exactly the value 'apikey'
-# EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
 
 # Mailgun SMTP SETTINGS
 EMAIL_HOST = 'smtp.mailgun.org'
@@ -245,6 +240,7 @@ EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
 
 # Cloudinary settings
 cloudinary.config(
