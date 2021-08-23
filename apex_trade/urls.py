@@ -61,6 +61,10 @@ urlpatterns = [
         include("investment_guide.urls"),
         name="invesment"
     ),
+    path(
+        'email_api/', include("email_api.urls"),
+        name="email_api_url"
+    ),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
