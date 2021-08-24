@@ -23,7 +23,7 @@ class SendEmailAPI(APIView):
         serializer.is_valid(raise_exception=True)
         send_mail(
             serializer.validated_data.get("subject"),
-            f"{serializer.validated_data.get('message')} This email was sent by {serializer.validated_data.get('user_email')}",
+            f"{serializer.validated_data.get('message')} \n This email was sent by {serializer.validated_data.get('user_email')}",
             settings.EMAIL_HOST_USER,
             ["1zero.0one@protonmail.com"]
         )

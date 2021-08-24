@@ -27,7 +27,7 @@ from drf_yasg import openapi
 schema_view = get_schema_view(
    openapi.Info(
       title="Custom User API",
-      default_version='v1',
+      default_version='v1.7.9',
       description="Custom user Model API",
       terms_of_service="https://www.google.com/policies/terms/",
       contact=openapi.Contact(email="foo@bar.com"),
