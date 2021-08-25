@@ -1,11 +1,10 @@
-from django.shortcuts import render
 from django.conf import settings
-from rest_framework import serializers, status
+from rest_framework import status
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializers import SendEmailSerializer
-from django.core.mail import message, send_mail
+from django.core.mail import send_mail
 from drf_yasg.utils import swagger_auto_schema
 
 
@@ -23,7 +22,7 @@ class SendEmailAPI(APIView):
         serializer.is_valid(raise_exception=True)
         send_mail(
             serializer.validated_data.get("subject"),
-            f"{serializer.validated_data.get('message')} \n This email was sent by {serializer.validated_data.get('user_email')}",
+            f"{serializer.validated_data.get('message')} \n \n This email was sent by {serializer.validated_data.get('user_email')}",
             settings.EMAIL_HOST_USER,
             ["1zero.0one@protonmail.com"]
         )
