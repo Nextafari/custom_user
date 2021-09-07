@@ -169,4 +169,3 @@ class UserCompoundProfit(APIView):
             # thus indexing the variable
             new_profit += Decimal(profit[0])
         return Response(new_profit)
-
