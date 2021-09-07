@@ -6,8 +6,8 @@ from .serializers import UserWalletSerializer
 from drf_yasg.utils import swagger_auto_schema
 from django.core.mail import send_mail
 from django.conf import settings
-from rest_framework.permissions import IsAuthenticated
-from .models import UserAmount, Profit
+from rest_framework.permissions import AllowAny, IsAuthenticated
+from .models import UserAmount, Profit, User
 from decimal import Decimal
 
 
@@ -151,3 +151,22 @@ class CompoundedProfit(APIView):
             # thus indexing the variable
             new_profit += Decimal(profit[0])
         return Response(new_profit)
+
+
+class UserCompoundProfit(APIView):
+    """gets the compunded profit for each user"""
+    permission_classes = [AllowAny]
+    
+    def get(self, request, pk):
+        # user = self.request.user
+        user = User.objects.get(pk=pk)
+        user_profit = Profit.objects.filter(user=user).values_list("profit")
+
+        new_profit = 0
+
+        for profit in user_profit:
+            # Getting the integers in the queryset,
+            # thus indexing the variable
+            new_profit += Decimal(profit[0])
+        return Response(new_profit)
+

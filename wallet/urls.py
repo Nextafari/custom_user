@@ -17,4 +17,9 @@ urlpatterns = [
         views.CompoundedProfit.as_view(),
         name="compound_profit"
     ),
+    path(
+    "user_compound_profit/<int:pk>/",
+    views.UserCompoundProfit.as_view(),
+    name="user_compound_profit"
+    ),
 ]
