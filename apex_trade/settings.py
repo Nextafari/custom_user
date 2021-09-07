@@ -181,8 +181,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'trddex_app', 
-        'USER': 'postgres', 
-        'PASSWORD': 'foobar',
+        'USER': os.environ["USER"], 
+        'PASSWORD': os.environ["PASSWORD"],
         'HOST': '127.0.0.1', 
         'PORT': '5432',
     }
